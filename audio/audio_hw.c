@@ -307,14 +307,6 @@ struct route_setting defaults[] = {
     /* general */
 
     {
-        .ctl_name = MIXER_DL2_LEFT_EQUALIZER,
-        .strval = MIXER_FLAT_RESPONSE,
-    },
-    {
-        .ctl_name = MIXER_DL2_RIGHT_EQUALIZER,
-        .strval = MIXER_FLAT_RESPONSE,
-    },
-    {
         .ctl_name = MIXER_DL1_EQUALIZER,
         .strval = MIXER_FLAT_RESPONSE,
     },
