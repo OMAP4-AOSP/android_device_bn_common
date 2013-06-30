@@ -1651,7 +1651,7 @@ static int start_output_stream(struct omap_stream_out *out)
     if((adev->devices.out_devices & AUDIO_DEVICE_OUT_ANLG_DOCK_HEADSET) ||
         (adev->devices.out_devices & AUDIO_DEVICE_OUT_DGTL_DOCK_HEADSET)) {
         card = CARD_OMAP_USB;
-        port = PORT_MM;
+        port = PORT_MM_LP;
     }
     /* default to low power:
      *  NOTE: PCM_NOIRQ mode is required to dynamically scale avail_min
@@ -2250,6 +2250,12 @@ static int start_input_stream(struct omap_stream_in *in)
 //    if(adev->devices & AUDIO_DEVICE_IN_USB_HEADSET) {
 //        adev->input_requires_stereo = 0;
 //    }
+
+    if((adev->devices.in_devices & AUDIO_DEVICE_IN_ANLG_DOCK_HEADSET) ||
+        (adev->devices.in_devices & AUDIO_DEVICE_IN_DGTL_DOCK_HEADSET)) {
+        card = CARD_OMAP_USB;
+        device = PORT_MM_LP;
+    }
 
     if (adev->input_requires_stereo && (in->config.channels == 1))
         setup_stereo_to_mono_input_remix(in);
@@ -3454,6 +3460,8 @@ static uint32_t adev_get_supported_devices(const struct audio_hw_device *dev)
             AUDIO_DEVICE_IN_FM_RADIO_RX |
             AUDIO_DEVICE_IN_ALL_SCO |
 //            AUDIO_DEVICE_IN_USB_HEADSET |
+            AUDIO_DEVICE_IN_ANLG_DOCK_HEADSET |
+            AUDIO_DEVICE_IN_DGTL_DOCK_HEADSET |
             AUDIO_DEVICE_IN_DEFAULT |
             AUDIO_DEVICE_IN_VOICE_CALL);
 }
