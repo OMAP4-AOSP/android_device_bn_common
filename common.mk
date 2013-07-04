@@ -63,15 +63,6 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.nf.profile=2 \
     ro.nf.level=512
 
-# Dalvik
-PRODUCT_PROPERTY_OVERRIDES += \
-    dalvik.vm.heapstartsize=8m \
-    dalvik.vm.heapgrowthlimit=96m \
-    dalvik.vm.heapsize=256m \
-    dalvik.vm.heaptargetutilization=0.75 \
-    dalvik.vm.heapminfree=512k \
-    dalvik.vm.heapmaxfree=8m
-
 PRODUCT_CHARACTERISTICS := tablet
 
 DEVICE_PACKAGE_OVERLAYS := $(DEVICE_FOLDER)/overlay/aosp
@@ -202,4 +193,5 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     $(COMMON_FOLDER)/prebuilt/poetry/poem.txt:root/sbin/poem.txt
 
+$(call inherit-product-if-exists, frameworks/native/build/tablet-7in-hdpi-1024-dalvik-heap.mk)
 $(call inherit-product-if-exists, vendor/bn/omap4-common/omap4-common-vendor.mk)
