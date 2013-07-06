@@ -29,8 +29,6 @@ static pthread_once_t g_init = PTHREAD_ONCE_INIT;
 static pthread_mutex_t g_lock = PTHREAD_MUTEX_INITIALIZER;
 
 char const *const LCD_FILE = "/sys/class/backlight/lcd-backlight/brightness";
-char const *const TS_REG_FILE = "/sys/bus/i2c/drivers/ft5x06/3-0038/wmreg";
-char const *const TS_VAL_FILE = "/sys/bus/i2c/drivers/ft5x06/3-0038/wmval";
 
 void init_g_lock(void) {
 	pthread_mutex_init(&g_lock, NULL);
@@ -80,12 +78,6 @@ static int set_light_backlight(struct light_device_t *dev,
 
 	pthread_mutex_lock(&g_lock);
 	err = write_int(LCD_FILE, brightness);
-
-	if (!brightness_prev_value) {
-		usleep(200000);
-		write_int(TS_REG_FILE, 80);
-		write_int(TS_VAL_FILE, 16);
-	}
 	pthread_mutex_unlock(&g_lock);
 
 	if (! err) {
@@ -124,9 +116,6 @@ static int open_lights(const struct hw_module_t *module, char const *name,
 	dev->set_light = set_light;
 
 	*device = (struct hw_device_t *)dev;
-
-	write_int(TS_REG_FILE, 80);
-	write_int(TS_VAL_FILE, 16);
 
 	return 0;
 }
