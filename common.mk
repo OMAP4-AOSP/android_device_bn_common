@@ -193,5 +193,4 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     $(COMMON_FOLDER)/prebuilt/poetry/poem.txt:root/sbin/poem.txt
 
-$(call inherit-product-if-exists, frameworks/native/build/tablet-7in-hdpi-1024-dalvik-heap.mk)
 $(call inherit-product-if-exists, vendor/bn/omap4-common/omap4-common-vendor.mk)
