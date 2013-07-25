@@ -50,19 +50,17 @@ BOARD_USE_TI_ENHANCED_DOMX := true
 
 # Processor
 TARGET_CPU_ABI := armeabi-v7a
+TARGET_CPU_VARIANT := cortex-a9
 TARGET_CPU_ABI2 := armeabi
 TARGET_CPU_SMP := true
 TARGET_ARCH := arm
 TARGET_BOARD_PLATFORM := omap4
 TARGET_ARCH_VARIANT := armv7-a-neon
-ARCH_ARM_HAVE_TLS_REGISTER := true
-TARGET_GLOBAL_CFLAGS += -mtune=cortex-a9 -mfpu=neon -mfloat-abi=softfp
-TARGET_GLOBAL_CPPFLAGS += -mtune=cortex-a9 -mfpu=neon -mfloat-abi=softfp
 
 # Wifi
-USES_TI_MAC80211 := true
+#USES_TI_MAC80211 := true
 BOARD_WPA_SUPPLICANT_DRIVER      := NL80211
-WPA_SUPPLICANT_VERSION           := VER_0_8_X_TI
+WPA_SUPPLICANT_VERSION           := VER_0_8_X
 BOARD_HOSTAPD_DRIVER             := NL80211
 PRODUCT_WIRELESS_TOOLS           := true
 BOARD_WLAN_DEVICE                := wl12xx_mac80211
@@ -70,7 +68,7 @@ BOARD_SOFTAP_DEVICE              := wl12xx_mac80211
 WIFI_DRIVER_MODULE_PATH          := "/system/lib/modules/wl12xx_sdio.ko"
 WIFI_DRIVER_MODULE_NAME          := "wl12xx_sdio"
 WIFI_FIRMWARE_LOADER             := ""
-COMMON_GLOBAL_CFLAGS		 += -DUSES_TI_MAC80211
+#COMMON_GLOBAL_CFLAGS		 += -DUSES_TI_MAC80211
 
 
 # Kernel
