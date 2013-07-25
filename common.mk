@@ -121,9 +121,6 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     Email \
 
-PRODUCT_PACKAGES += \
-    hwcomposer.default \
-
 PRODUCT_AAPT_PREF_CONFIG := hdpi
 # BT
 PRODUCT_PACKAGES += \
@@ -168,7 +165,6 @@ PRODUCT_PACKAGES += \
     smc_pa_ctrl \
     tf_daemon \
     libtf_crypto_sst
-#   libOMX.TI.DUCATI1.VIDEO.CAMERA \
 
 # Standard CM stuff.
 PRODUCT_PACKAGES += \
