@@ -17,7 +17,7 @@
 #
 # Everything in this directory will become public
 
-COMMON_FOLDER := device/bn/bn-common
+COMMON_FOLDER := device/bn/common
 
 # set to allow building from omap4-common
 BOARD_VENDOR := bn
@@ -189,4 +189,4 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     $(COMMON_FOLDER)/prebuilt/poetry/poem.txt:root/sbin/poem.txt
 
-$(call inherit-product-if-exists, vendor/bn/omap4-common/omap4-common-vendor.mk)
+$(call inherit-product-if-exists, vendor/bn/omap4470-common/omap4470-common-vendor.mk)

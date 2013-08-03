@@ -11,10 +11,10 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-COMMON_FOLDER := device/bn/bn-common
+COMMON_FOLDER := device/bn/common
 
 # inherit from the proprietary version
--include vendor/bn/omap4-common/BoardConfigVendor.mk
+-include vendor/bn/omap4470-common/BoardConfigVendor.mk
 
 # set to allow building from omap4-common
 BOARD_VENDOR := bn
