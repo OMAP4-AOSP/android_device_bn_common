@@ -103,6 +103,9 @@ DOMX_PATH := $(COMMON_FOLDER)/domx
 ADDITIONAL_DEFAULT_PROPERTIES += ro.secure=0
 ADDITIONAL_DEFAULT_PROPERTIES += ro.allow.mock.location=1
 
+# Disable scissor optimisation - helps with scrolling performance
+ADDITIONAL_DEFAULT_PROPERTIES += ro.hwui.disable_scissor_opt=true
+
 # Graphics
 USE_OPENGL_RENDERER := true
 # set if the target supports FBIO_WAITFORVSYNC
