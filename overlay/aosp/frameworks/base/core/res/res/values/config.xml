@@ -197,18 +197,7 @@
     <!-- Minimum screen brightness allowed by the power manager. -->
     <integer name="config_screenBrightnessDim">5</integer>
 
-    <!-- If this is true, the screen will come on when you unplug usb/power/whatever. -->
-    <bool name="config_unplugTurnsOnScreen">true</bool>
-
     <!-- Maximum number of supported users -->
     <integer name="config_multiuserMaximumUsers">8</integer>
-
-    <!-- CM CHANGES START HERE -->
-
-    <!-- LUN file to be used by legacy USB manager.
-         The existence of this file will be used to determine in the
-         legacy USB manager should be started. -->
-    <!-- <string name="config_legacyUmsLunFile">/sys/devices/platform/usb_mass_storage/lun0/file</string> -->
-
 
 </resources>
