@@ -22,6 +22,9 @@ COMMON_FOLDER := device/bn/common
 # set to allow building from omap4-common
 BOARD_VENDOR := bn
 
+# add common overlays
+DEVICE_PACKAGE_OVERLAYS += $(COMMON_FOLDER)/overlay/aosp
+
 # Setup custom omap4xxx defines
 BOARD_USE_CUSTOM_LIBION := true
 
@@ -64,8 +67,6 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.nf.level=512
 
 PRODUCT_CHARACTERISTICS := tablet
-
-DEVICE_PACKAGE_OVERLAYS := $(DEVICE_FOLDER)/overlay/aosp
 
 # enable Google-specific location features,
 # like NetworkLocationProvider and LocationCollector
