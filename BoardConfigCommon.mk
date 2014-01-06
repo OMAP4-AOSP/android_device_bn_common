@@ -35,6 +35,7 @@ BOARD_USES_GENERIC_AUDIO := false
 
 # Bluetooth
 BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := $(COMMON_FOLDER)/bluetooth
+BOARD_HAVE_BLUETOOTH_TI := true
 
 # Setup custom omap4xxx defines
 BOARD_USE_CUSTOM_LIBION := true
