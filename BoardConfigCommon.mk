@@ -174,7 +174,29 @@ BOARD_USE_CUSTOM_RECOVERY_FONT := \"roboto_15x24.h\"
 RECOVERY_NAME := EMMC CWM-based recovery
 
 # Bootanimation
-TARGET_BOOTANIMATION_PRELOAD := true
+#TARGET_BOOTANIMATION_PRELOAD := true
+
+# SELinux stuff
+BOARD_SEPOLICY_DIRS += \
+    device/bn/common/sepolicy
+
+BOARD_SEPOLICY_UNION += \
+    bluetooth.te \
+    debuggered.te \
+    file_contexts \
+    device.te \
+    dhcp.te \
+    domain.te \
+    file.te \
+    init_shell.te \
+    mediaserver.te \
+    netd.te \
+    pvrsrvinit.te \
+    rild.te \
+    system.te \
+    tee.te \
+    vold.te
+
 
 # TWRP stuff
 TW_NO_REBOOT_BOOTLOADER := true
