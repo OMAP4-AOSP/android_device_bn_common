@@ -1603,17 +1603,19 @@ static void select_input_device(struct omap_audio_device *adev)
 		  adev->board_type == OMAP4_HUMMINGBIRD) {
             /* Select front end */
             ALOGE(">>> [ASoC]select_input_device:: in_devices==%d, headset_on==%d, main_mic_on==%d, sub_mic_on==%d\n", adev->devices.in_devices, headset_on, main_mic_on, sub_mic_on);
-            if (main_mic_on || sub_mic_on || headset_on) {
+            if (main_mic_on || sub_mic_on) {
                 set_route_by_array(adev->mixer, mm_ul2_dmic1_left, 1);
                 // hw_is_stereo_only = 1;
             } else {
-                set_route_by_array(adev->mixer, mm_ul2_dmic1_left, 0);
+                set_route_by_array(adev->mixer, mm_ul2_amic_right, 1);
 	    }
 
             /* Select back end */
-            mixer_ctl_set_enum_by_string(adev->mixer_ctls.right_capture, "off");
+            mixer_ctl_set_enum_by_string(adev->mixer_ctls.right_capture,
+                    main_mic_on ? "Off" :
+                    (headset_on ? MIXER_HS_MIC : "Off"));
             mixer_ctl_set_enum_by_string(adev->mixer_ctls.left_capture,
-                    main_mic_on ? "off" :
+                    main_mic_on ? "Off" :
                     (headset_on ? MIXER_HS_MIC : "Off"));
         }
     }
