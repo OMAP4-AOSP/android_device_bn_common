@@ -14,10 +14,10 @@
      See the License for the specific language governing permissions and
      limitations under the License.
 -->
-<resources>
-    <string name="app_name">USBHost Switcher</string>
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <string name="app_name">USB host switcher</string>
     <string name="action_settings">Settings</string>
-    <string name="usb_title">Nook HD/HD+ USB Host switcher</string>
-    <string name="usb_status">Forced USBHost status</string>
-    <string name="usb_button">Toggle Button</string>
+    <string name="usb_title">Nook HD/HD+ USB host switcher</string>
+    <string name="usb_status">Forced USB host status</string>
+    <string name="usb_button">Toggle button</string>
 </resources>
