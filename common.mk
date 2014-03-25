@@ -65,7 +65,8 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.sf.lcd_density=240 \
     ro.nf.profile=2 \
     ro.nf.level=512 \
-    ro.bq.gpu_to_cpu_unsupported=1
+    ro.bq.gpu_to_cpu_unsupported=1 \
+    media.stagefright.cache-params=18432/20480/15
 
 PRODUCT_CHARACTERISTICS := tablet
 
