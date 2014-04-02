@@ -16,9 +16,9 @@
      limitations under the License.
 -->
 <resources>
-  <string name="app_name">USB-hostschakelaar</string>
-  <string name="action_settings">Instellingen</string>
-  <string name="usb_title">USB-hostschakelaar voor Nook HD/HD+</string>
-  <string name="usb_status">USB-hoststatus forceren</string>
-  <string name="usb_button">Schakelknop</string>
+  <string name="app_name">Режим USB-хоста</string>
+  <string name="action_settings">Настройки</string>
+  <string name="usb_title">Переключатель режима USB-хоста для Nook HD/HD+</string>
+  <string name="usb_status">Состояние хоста</string>
+  <string name="usb_button">Переключить режим</string>
 </resources>
