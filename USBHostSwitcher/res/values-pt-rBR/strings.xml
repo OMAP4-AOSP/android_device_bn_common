@@ -16,9 +16,9 @@
      limitations under the License.
 -->
 <resources>
-  <string name="app_name">USB-Host-Umschalter</string>
-  <string name="action_settings">Einstellungen</string>
-  <string name="usb_title">Nook HD/HD+ USB-Host-Umschalter</string>
-  <string name="usb_status">Eingestellter USB-Host-Status</string>
-  <string name="usb_button">Umschalten</string>
+  <string name="app_name">Alternador de host USB</string>
+  <string name="action_settings">Configurações</string>
+  <string name="usb_title">Alternador de host USB do Nook HD/HD+ </string>
+  <string name="usb_status">Status de host USB forçado</string>
+  <string name="usb_button">Botão alternador</string>
 </resources>
