@@ -17,7 +17,6 @@
 -->
 <resources>
   <string name="app_name">Basculeur d\'hôte USB</string>
-  <string name="action_settings">Paramètres</string>
   <string name="usb_title">Basculer en hôte USB HD/HD+</string>
   <string name="usb_status">État de l\'hôte USB forcé</string>
   <string name="usb_button">Bouton marche/arrêt</string>

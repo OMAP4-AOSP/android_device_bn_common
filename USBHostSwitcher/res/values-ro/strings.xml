@@ -16,8 +16,9 @@
      limitations under the License.
 -->
 <resources>
-  <string name="app_name">USB host kapcsoló</string>
-  <string name="usb_title">Nook HD/HD+ USB host kapcsoló</string>
-  <string name="usb_status">Kényszerített USB host állapota</string>
-  <string name="usb_button">Váltógomb</string>
+  <string name="app_name">Comutator host USB</string>
+  <string name="action_settings">Setări</string>
+  <string name="usb_title">Comutator host USB Nook HD/HD+</string>
+  <string name="usb_status">Statut host USB forțat</string>
+  <string name="usb_button">Buton de comutare</string>
 </resources>

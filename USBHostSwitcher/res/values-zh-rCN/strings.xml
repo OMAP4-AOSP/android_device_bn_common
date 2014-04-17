@@ -17,7 +17,6 @@
 -->
 <resources>
   <string name="app_name">USB host 切换器</string>
-  <string name="action_settings">设置</string>
   <string name="usb_title">Nook HD/HD+ USB host 切换器</string>
   <string name="usb_status">强制 USB host 状态</string>
   <string name="usb_button">切换按钮</string>
