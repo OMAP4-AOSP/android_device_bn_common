@@ -17,6 +17,7 @@
 -->
 <resources>
   <string name="app_name">USB host kapcsoló</string>
+  <string name="action_settings">Beállítások</string>
   <string name="usb_title">Nook HD/HD+ USB host kapcsoló</string>
   <string name="usb_status">Kényszerített USB host állapota</string>
   <string name="usb_button">Váltógomb</string>
