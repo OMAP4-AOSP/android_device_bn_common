@@ -16,9 +16,5 @@
      limitations under the License.
 -->
 <resources>
-  <string name="app_name">Växlare för USB-värd</string>
-  <string name="action_settings">Inställningar</string>
-  <string name="usb_title">Växlare för Nook HD/HD+ USB-värd</string>
-  <string name="usb_status">Tvingad USB-värdstatus</string>
-  <string name="usb_button">Växlingsknapp</string>
+  <string name="action_settings">設定</string>
 </resources>
