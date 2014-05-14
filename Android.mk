@@ -14,7 +14,7 @@
 # limitations under the License.
 #
 
-ifeq ($(BOARD_VENDOR),bn)
+ifneq ($(filter ovation hummingbird,$(TARGET_DEVICE)),)
 ifeq ($(TARGET_BOARD_PLATFORM),omap4)
 
 LOCAL_PATH := $(call my-dir)
