@@ -15,6 +15,10 @@
      See the License for the specific language governing permissions and
      limitations under the License.
 -->
-<resources>
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+  <string name="app_name">USB host 切換器</string>
   <string name="action_settings">設定</string>
+  <string name="usb_title">Nook HD/HD+ USB host 切換器</string>
+  <string name="usb_status">強制 USB host 狀態</string>
+  <string name="usb_button">切換按鈕</string>
 </resources>

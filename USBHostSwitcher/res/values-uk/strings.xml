@@ -16,9 +16,9 @@
      limitations under the License.
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-  <string name="app_name">Εναλλαγή USB host</string>
-  <string name="action_settings">Ρυθμίσεις</string>
-  <string name="usb_title">Εναλλαγή USB host Nook HD/HD+</string>
-  <string name="usb_status">Εξαναγκασμός κατάστασης USB host</string>
-  <string name="usb_button">Κουμπί εναλλαγής</string>
+  <string name="app_name">Перемикання у Режим USB хоста</string>
+  <string name="action_settings">Налаштування</string>
+  <string name="usb_title">Перемикання у Режим USB хоста Nook HD/HD+</string>
+  <string name="usb_status">Примусовий статус USB хоста</string>
+  <string name="usb_button">Кнопка перемикання</string>
 </resources>

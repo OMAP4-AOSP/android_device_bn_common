@@ -15,7 +15,7 @@
      See the License for the specific language governing permissions and
      limitations under the License.
 -->
-<resources>
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
   <string name="app_name">Växlare för USB-värd</string>
   <string name="action_settings">Inställningar</string>
   <string name="usb_title">Växlare för Nook HD/HD+ USB-värd</string>

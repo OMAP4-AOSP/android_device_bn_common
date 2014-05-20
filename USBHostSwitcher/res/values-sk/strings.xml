@@ -15,7 +15,7 @@
      See the License for the specific language governing permissions and
      limitations under the License.
 -->
-<resources>
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
   <string name="app_name">Prepínač USB host</string>
   <string name="action_settings">Nastavenia</string>
   <string name="usb_title">Nook HD/HD+ prepínač USB host</string>

@@ -15,7 +15,7 @@
      See the License for the specific language governing permissions and
      limitations under the License.
 -->
-<resources>
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
   <string name="app_name">USB-hostschakelaar</string>
   <string name="action_settings">Instellingen</string>
   <string name="usb_title">USB-hostschakelaar voor Nook HD/HD+</string>

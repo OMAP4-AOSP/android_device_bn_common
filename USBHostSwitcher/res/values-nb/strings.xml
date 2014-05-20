@@ -16,9 +16,9 @@
      limitations under the License.
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-  <string name="app_name">Εναλλαγή USB host</string>
-  <string name="action_settings">Ρυθμίσεις</string>
-  <string name="usb_title">Εναλλαγή USB host Nook HD/HD+</string>
-  <string name="usb_status">Εξαναγκασμός κατάστασης USB host</string>
-  <string name="usb_button">Κουμπί εναλλαγής</string>
+  <string name="app_name">USB-OTH bytte</string>
+  <string name="action_settings">Innstillinger</string>
+  <string name="usb_title">Nook HD / HD + USB-OTG skifte</string>
+  <string name="usb_status">Tvunget USB vert status</string>
+  <string name="usb_button">Veksleknapp</string>
 </resources>

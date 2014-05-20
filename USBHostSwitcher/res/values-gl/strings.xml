@@ -15,7 +15,7 @@
      See the License for the specific language governing permissions and
      limitations under the License.
 -->
-<resources>
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
   <string name="app_name">Selector de USB-OTG</string>
   <string name="action_settings">Axustes</string>
   <string name="usb_title">Selector de Nook HD/HD+ USB-OTG</string>
