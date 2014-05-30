@@ -16,9 +16,9 @@
      limitations under the License.
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-  <string name="app_name">Intercanviador d\'USBHost</string>
-  <string name="action_settings">Configuració</string>
-  <string name="usb_title">Intercanviador Nook HD/HD+ USB Host</string>
-  <string name="usb_status">Estat forçat d\'USBHost</string>
-  <string name="usb_button">Botó commuta</string>
+  <string name="app_name">ตัวสลับ USB โฮสต์</string>
+  <string name="action_settings">ตั้งค่า</string>
+  <string name="usb_title">ตัวสลับ USB โฮสต์ สำหรับ Nook HD/HD+ </string>
+  <string name="usb_status">บังคับใช้สถานะโฮสต์ USB</string>
+  <string name="usb_button">ปุ่มสลับ</string>
 </resources>
