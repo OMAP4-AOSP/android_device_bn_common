@@ -16,9 +16,9 @@
      limitations under the License.
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-  <string name="app_name">USB 호스트 스위쳐</string>
-  <string name="action_settings">설정</string>
-  <string name="usb_title">Nook HD/HD+ USB 호스트 스위쳐</string>
-  <string name="usb_status">강제 USB 호스트 상태</string>
-  <string name="usb_button">토글 버튼</string>
+  <string name="app_name">USB-OTG hautatzailea</string>
+  <string name="action_settings">Ezarpenak</string>
+  <string name="usb_title">Nook HD/HD+ USB-OTG hautatzailea</string>
+  <string name="usb_status">USB-OTG egoera bortxatu</string>
+  <string name="usb_button">Botoi konmutadorea</string>
 </resources>
