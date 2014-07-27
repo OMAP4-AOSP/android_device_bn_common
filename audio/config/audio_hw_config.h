@@ -60,6 +60,16 @@ struct pcm_config pcm_config_in = {
     .format = PCM_FORMAT_S16_LE,
 };
 
+struct pcm_config pcm_config_in_low_latency = {
+    .channels = 2,
+    .rate = 48000,
+    .period_size = 960 / 2,
+    .period_count = 4,
+    .start_threshold = 1,
+    .stop_threshold = 960 * 2,
+    .format = PCM_FORMAT_S16_LE,
+};
+
 struct pcm_config pcm_config_sco = {
     .channels = 1,
     .rate = 8000,

@@ -93,7 +93,8 @@ struct stream_in {
 
     pthread_mutex_t lock; /* see note below on mutex acquisition order */
     struct pcm *pcm;
-    struct pcm_config pcm_config;
+    struct pcm_config pcm_config;          /* current configuration */
+    struct pcm_config pcm_config_non_sco;  /* configuration to return after SCO is done */
     bool standby;
 
     unsigned int requested_rate;
@@ -324,7 +325,7 @@ static int start_input_stream(struct stream_in *in)
         in->pcm_config = pcm_config_sco;
     } else {
         device = PCM_DEVICE_DEFAULT_IN;
-        in->pcm_config = pcm_config_in;
+        in->pcm_config = in->pcm_config_non_sco;
     }
 
     /*
@@ -1224,7 +1225,10 @@ static int adev_open_input_stream(struct audio_hw_device *dev,
     pthread_mutex_unlock(&adev->lock);
 
     in->requested_rate = config->sample_rate;
-    in->pcm_config = pcm_config_in;
+    /* default PCM config */
+    in->pcm_config = (config->sample_rate == 48000) && (flags & AUDIO_INPUT_FLAG_FAST) ?
+            pcm_config_in_low_latency : pcm_config_in;
+    in->pcm_config_non_sco = in->pcm_config;
 
     *stream_in = &in->stream;
     return 0;
