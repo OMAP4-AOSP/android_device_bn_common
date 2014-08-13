@@ -32,7 +32,12 @@
 
 namespace android {
 
-#define MAX_CAMERAS_SUPPORTED 2
+#ifdef USE_CAMERA_STUB
+    #define MAX_CAMERAS_SUPPORTED 1
+#else
+    #define MAX_CAMERAS_SUPPORTED 2
+#endif
+
 #define MAX_SIMUL_CAMERAS_SUPPORTED 1
 #define MAX_PROP_NAME_LENGTH 50
 #define MAX_PROP_VALUE_LENGTH 2048
