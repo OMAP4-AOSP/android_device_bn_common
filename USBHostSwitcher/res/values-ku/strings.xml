@@ -16,9 +16,9 @@
      limitations under the License.
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-  <string name="app_name">میوانی سویچی USB</string>
-  <string name="action_settings">ڕێکخستن</string>
+  <string name="app_name">گۆڕینی خانەخوێی USB</string>
+  <string name="action_settings">ڕێکخستنەکان</string>
   <string name="usb_title">Nook HD/HD+ USB host switcher</string>
-  <string name="usb_status">پاڵنرا USB میوان باری</string>
+  <string name="usb_status">پاڵنرا بە دۆخی خانەخوێی USB</string>
   <string name="usb_button">دوگمه‌ی تۆگڵ</string>
 </resources>

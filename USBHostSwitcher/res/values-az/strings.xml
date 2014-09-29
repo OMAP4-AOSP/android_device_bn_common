@@ -16,9 +16,9 @@
      limitations under the License.
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-  <string name="app_name">USB hostun dəyişdiricisi</string>
-  <string name="action_settings">Parametrlər</string>
-  <string name="usb_title">Nook HD / HD + USB hostun dəyişdiricisi</string>
-  <string name="usb_status">Məcburi USB hostun statusu</string>
+  <string name="app_name">USB mənbə dəyişdiricisi</string>
+  <string name="action_settings">Tənzimləmələr</string>
+  <string name="usb_title">Nook HD / HD + USB mənbə dəyişdiricisi</string>
+  <string name="usb_status">Məcburi USB mənbənin statusu</string>
   <string name="usb_button">Keçid düyməsi</string>
 </resources>
