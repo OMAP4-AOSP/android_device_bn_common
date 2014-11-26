@@ -3,8 +3,8 @@ LOCAL_PATH := $(call my-dir)
 include $(CLEAR_VARS)
 
 LOCAL_SRC_FILES := pvrsrvinit.c
-LOCAL_LDFLAGS := -L vendor/motorola/omap4-common/imgtec/vendor/lib
-LOCAL_LDLIBS := -lsrv_init_SGX540_120 -lsrv_um_SGX540_120
+LOCAL_LDFLAGS := -L vendor/bn/omap4470-common/proprietary/vendor/lib
+LOCAL_LDLIBS := -lsrv_init_SGX544_112 -lsrv_um_SGX544_112
 LOCAL_MODULE_PATH := $(TARGET_OUT)/bin/
 LOCAL_MODULE := pvrsrvinit
 LOCAL_MODULE_TAGS := optional
