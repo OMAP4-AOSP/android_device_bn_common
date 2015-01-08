@@ -122,6 +122,12 @@ PRODUCT_PACKAGES += \
     libjni_pinyinime \
     sh \
 
+# symlinks and pvr files
+PRODUCT_PACKAGES += \
+    libion.so \
+    pvrsrvinit \
+    libPVRScopeServices.so
+
 # Extra apps (not always included by AOSP)
 PRODUCT_PACKAGES += \
     Email \
