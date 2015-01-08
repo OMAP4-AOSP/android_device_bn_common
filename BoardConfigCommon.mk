@@ -181,7 +181,7 @@ endif
 
 # Misc.
 BOARD_NEEDS_CUTILS_LOG := true
-BOARD_USES_SECURE_SERVICES := true
+BOARD_USES_LOCAL_SECURE_SERVICES := true
 
 # CodeAurora Optimizations: msm8960: Improve performance of memmove, bcopy, and memmove_words
 # added by twa_priv
