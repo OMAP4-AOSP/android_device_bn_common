@@ -12,6 +12,7 @@
 # limitations under the License.
 
 COMMON_FOLDER := device/bn/common
+TARGET_BOARD_OMAP_CPU := 4470
 
 # inherit from the proprietary version
 -include vendor/bn/omap4470-common/BoardConfigVendor.mk
