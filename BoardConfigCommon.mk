@@ -80,7 +80,9 @@ BOARD_KERNEL_BASE := 0x80000000
 TARGET_NO_RADIOIMAGE := true
 TARGET_NO_BOOTLOADER := true
 BOARD_KERNEL_PAGESIZE := 4096
-BOARD_KERNEL_CMDLINE := androidboot.console=ttyO0 console=ttyO0,115200n8 def_disp=lcd2
+TARGET_KERNEL_SOURCE := kernel/bn/omap
+TARGET_KERNEL_CONFIG := android_omap4_defconfig
+TARGET_KERNEL_SELINUX_CONFIG := selinux_defconfig
 
 # Filesystem
 TARGET_USERIMAGES_USE_EXT4 := true
