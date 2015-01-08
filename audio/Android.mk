@@ -1,4 +1,4 @@
-# Copyright (C) 2011 Texas Instruments
+# Copyright (C) 2012 The Android Open Source Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -15,20 +15,37 @@
 LOCAL_PATH := $(call my-dir)
 
 ###
-### OMAP ABE AUDIO HAL
+### GENERIC AUDIO HAL
 ###
 
 include $(CLEAR_VARS)
 
 LOCAL_MODULE := audio.primary.$(TARGET_BOOTLOADER_BOARD_NAME)
 LOCAL_MODULE_PATH := $(TARGET_OUT_SHARED_LIBRARIES)/hw
-LOCAL_SRC_FILES := audio_hw.c
+
+LOCAL_SRC_FILES := \
+	audio_hw.c \
+	audio_route.c
 
 LOCAL_C_INCLUDES += \
 	external/tinyalsa/include \
-	system/media/audio_utils/include \
-	system/media/audio_effects/include
-LOCAL_SHARED_LIBRARIES := liblog libcutils libtinyalsa libaudioutils libdl
+	external/expat/lib \
+	$(call include-path-for, audio-utils) \
+	$(call include-path-for, audio-effects)
+
+ifdef BOARD_AUDIO_PCM_DEVICE_DEFAULT_OUT
+    LOCAL_CFLAGS := -DPCM_DEVICE_DEFAULT_OUT=$(BOARD_AUDIO_PCM_DEVICE_DEFAULT_OUT)
+endif
+
+ifdef BOARD_AUDIO_PCM_DEVICE_DEFAULT_IN
+    LOCAL_CFLAGS := -DPCM_DEVICE_DEFAULT_IN=$(BOARD_AUDIO_PCM_DEVICE_DEFAULT_IN)
+endif
+
+ifdef BOARD_AUDIO_OUT_SAMPLING_RATE
+    LOCAL_CFLAGS := -DOUT_SAMPLING_RATE=$(BOARD_AUDIO_OUT_SAMPLING_RATE)
+endif
+
+LOCAL_SHARED_LIBRARIES := liblog libcutils libtinyalsa libaudioutils libexpat libaudio-resampler
 LOCAL_MODULE_TAGS := optional
 
 include $(BUILD_SHARED_LIBRARY)
@@ -49,10 +66,11 @@ LOCAL_C_INCLUDES += \
 	external/tinyalsa/include \
 	system/media/audio_utils/include \
 	system/media/audio_effects/include \
-	$(TI_CUSTOM_DOMX_PATH)/omx_core/inc
+        $(DOMX_PATH)/omx_core/inc
 
 LOCAL_SHARED_LIBRARIES := liblog libcutils libtinyalsa libaudioutils libdl
 LOCAL_MODULE_TAGS := optional
 
 include $(BUILD_SHARED_LIBRARY)
+
 
