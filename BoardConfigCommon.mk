@@ -121,10 +121,6 @@ BOARD_VOLD_MAX_PARTITIONS := 32
 BOARD_VOLD_EMMC_SHARES_DEV_MAJOR := true
 TARGET_USE_CUSTOM_LUN_FILE_PATH := "/sys/devices/virtual/android_usb/android0/f_mass_storage/lun%d/file"
 
-# Custom DOMX
-TI_CUSTOM_DOMX_PATH := $(COMMON_FOLDER)/domx
-DOMX_PATH := $(COMMON_FOLDER)/domx
-
 # adb has root
 ADDITIONAL_DEFAULT_PROPERTIES += ro.secure=0
 ADDITIONAL_DEFAULT_PROPERTIES += ro.allow.mock.location=1
@@ -146,6 +142,9 @@ ifdef BOARD_USE_TI_ENHANCED_DOMX
     BOARD_USE_TI_DUCATI_H264_PROFILE := true
     COMMON_GLOBAL_CFLAGS += -DENHANCED_DOMX
     ENHANCED_DOMX := true
+    TARGET_SPECIFIC_HEADER_PATH += $(COMMON_FOLDER)/domx/omx_core/inc
+    BOARD_USE_TI_CUSTOM_DOMX := true
+    DOMX_PATH := $(COMMON_FOLDER)/domx
 else
     DOMX_PATH := hardware/ti/omap4xxx/domx
 endif
