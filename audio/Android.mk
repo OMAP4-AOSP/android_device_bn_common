@@ -12,8 +12,6 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-ifeq ($(findstring omap, $(TARGET_BOARD_PLATFORM)),omap)
-
 LOCAL_PATH := $(call my-dir)
 
 ###
@@ -25,7 +23,6 @@ include $(CLEAR_VARS)
 LOCAL_MODULE := audio.primary.$(TARGET_BOOTLOADER_BOARD_NAME)
 LOCAL_MODULE_PATH := $(TARGET_OUT_SHARED_LIBRARIES)/hw
 LOCAL_SRC_FILES := audio_hw.c
-LOCAL_SRC_FILES += ril_interface.c
 
 LOCAL_C_INCLUDES += \
 	external/tinyalsa/include \
@@ -59,4 +56,3 @@ LOCAL_MODULE_TAGS := optional
 
 include $(BUILD_SHARED_LIBRARY)
 
-endif
