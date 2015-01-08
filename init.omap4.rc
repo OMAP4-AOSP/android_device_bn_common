@@ -1,0 +1,248 @@
+on early-init
+    mount debugfs debugfs /sys/kernel/debug
+    symlink /data/tombstones /tombstones
+
+on init
+    loglevel 7
+
+    # power management
+    # Enable off mode by default
+    write /sys/kernel/debug/pm_debug/enable_off_mode 1
+
+    # See storage config details at http://source.android.com/tech/storage/
+    mkdir /mnt/shell/emulated 0700 shell shell
+    mkdir /storage/emulated 0555 root root
+
+    export EXTERNAL_STORAGE /storage/emulated/legacy
+    export EMULATED_STORAGE_SOURCE /mnt/shell/emulated
+    export EMULATED_STORAGE_TARGET /storage/emulated
+
+    symlink /storage/emulated/legacy /storage/sdcard0
+    symlink /mnt/shell/emulated/0    /storage/emulated/legacy
+
+    # create external sd card mount points
+    mkdir /mnt/media_rw/sdcard1 0700 media_rw media_rw
+    mkdir /storage/sdcard1 0700 root root
+    symlink /storage/sdcard1 /ext_sdcard
+    symlink /storage/sdcard1 /mnt/ext_sdcard
+    export SECONDARY_STORAGE /storage/sdcard1
+
+    # create removable USB Mass Storage mountpoints
+    mkdir /mnt/media_rw/usb0 0700 media_rw media_rw
+    mkdir /storage/usb0 0700 root root
+
+    # create removable USB Mass Storage mountpoints
+    mkdir /storage/usb0 0555 root root
+    mkdir /storage/usb1 0555 root root
+
+on fs
+    # pvr module
+    insmod /system/lib/modules/pvrsrvkm_sgx540_120.ko
+    insmod /system/lib/modules/pvrsrvkm_sgx544_112.ko
+    insmod /system/lib/modules/omaplfb_sgx540_120.ko
+    insmod /system/lib/modules/omaplfb_sgx544_112.ko
+    start pvrsrvinit
+
+    # change permissions for ION driver
+    chmod 0777 /dev/ion
+
+    # Change permissions on the cmdline (this is for debug only)
+    chmod 444 /proc/cmdline
+
+    chown root system /proc/net/ip_conntrack
+
+on post-fs
+    setprop ro.radio.noril yes
+
+    # change /dev/hdcp owner and permission for FQC test
+    chown system system /dev/hdcp
+    chmod 0666 /dev/hdcp
+
+    # H264 Encoder Profile setting
+    # 1 - Base Profile
+    # 2 - Main Profile
+    # 8 - High Profile
+    setprop video.h264enc.profile 1
+
+    # Fix wlan MAC addr
+    start fixmac
+
+    # change permissions for Bluetooth/FM/GPS
+    chmod 0600 /sys/class/rfkill/rfkill0/state
+    chown bluetooth bluetooth /sys/class/rfkill/rfkill0/state
+    chmod 0600 /dev/ttyO3
+    chown bluetooth bluetooth /dev/ttyO3
+    chmod 0666 /dev/rfkill
+
+    #for Bluetooth HID
+    chmod 0666 /dev/uhid
+
+on post-fs-data
+    # we will remap this as /mnt/sdcard with the sdcard fuse tool
+    mkdir /data/media 0775 media_rw media_rw
+    chown media_rw media_rw /data/media
+
+    # make dir for trace
+    mkdir /cache/trace 0777 system system
+    chmod 0777 /cache/trace
+
+    mkdir /data/smc 0770 drmrpc drmrpc
+    chown drmrpc drmrpc /data/smc/counter.bin
+    chown drmrpc drmrpc /data/smc/storage.bin
+    chown drmrpc drmrpc /data/smc/system.bin
+
+    setprop vold.post_fs_data_done 1
+    start sdcard
+
+on boot
+    mount debugfs /sys/kernel/debug /sys/kernel/debug
+    chmod 0666 /dev/pvrsrvkm
+
+    # wi-fi
+    setprop wifi.interface "wlan0"
+    setprop softap.interface "wlan0"
+    insmod /system/lib/modules/compat.ko
+    insmod /system/lib/modules/cfg80211.ko
+    insmod /system/lib/modules/mac80211.ko
+    insmod /system/lib/modules/wl12xx.ko
+    insmod /system/lib/modules/wl12xx_sdio.ko
+
+    # wifi
+    mkdir /data/misc/wifi 0770 wifi wifi
+    mkdir /data/misc/wifi/sockets 0770 wifi wifi
+    mkdir /data/misc/dhcp 0770 dhcp dhcp
+    chown dhcp dhcp /data/misc/dhcp
+
+on property:dev.bootcomplete=1
+    start bootcnt
+    start install_keybox
+
+service fixmac /system/bin/fix-mac.sh
+    class core
+    user root
+    group root
+    oneshot
+    disabled
+
+service pvrsrvinit /system/bin/pvrsrvinit
+    class core
+    user root
+    group root
+    oneshot
+    disabled
+
+#shared transport user space mgr service for Bluetooth, FM and GPS
+service uim /system/bin/uim-sysfs
+    class main
+    user root
+    group bluetooth net_bt_admin
+
+service install_keybox /system/bin/install_wv_keybox
+    disabled
+    oneshot
+
+service bootcnt /system/bin/clear_bootcnt.sh
+    class core
+    user root
+    group root
+    disabled
+    oneshot
+
+# create filesystems if necessary
+service setup_fs /system/bin/setup_fs \
+    /dev/block/platform/omap/omap_hsmmc.1/by-name/cache \
+    /dev/block/platform/omap/omap_hsmmc.1/by-name/userdata
+    class core
+    user root
+    group root
+    oneshot
+
+###################################################
+# MSHIELD SMC Daemon - component required to store persistent data coming
+#   from the SMC PA to the device persistent storage
+###################################################
+service tf_daemon /system/bin/tf_daemon \
+    -d -c /system/etc/smc_normal_world_android_cfg.ini
+    class main
+    user root
+    group root
+    oneshot
+    disabled
+
+###################################################
+# MSHIELD SMC PA Control - installs the SMC PA into the Secure Environment
+###################################################
+service smc_pa /system/bin/smc_pa_ctrl \
+    -c /system/etc/smc_normal_world_android_cfg.ini \
+    start /vendor/firmware/smc_pa.ift
+    class core
+    user root
+    group root
+    oneshot
+
+on property:init.svc.smc_pa=stopped
+    start tf_daemon
+
+service sdcard /system/bin/sdcard -u 1023 -g 1023 /data/media /mnt/shell/emulated
+    class late_start
+    disabled
+
+service fuse_sdcard1 /system/bin/sdcard -u 1023 -g 1023 /mnt/media_rw/sdcard1 /storage/sdcard1
+    class late_start
+    disabled
+
+service fuse_usb0 /system/bin/sdcard -u 1023 -g 1023 /mnt/media_rw/usb0 /storage/usb0
+    class late_start
+    disabled
+
+service p2p_supplicant /system/bin/wpa_supplicant \
+    -iwlan0 -Dnl80211 -c/data/misc/wifi/wpa_supplicant.conf -N \
+    -ip2p0 -Dnl80211 -c/data/misc/wifi/p2p_supplicant.conf \
+    -O/data/misc/wifi/sockets -g@android:wpa_wlan0
+    class main
+    socket wpa_wlan0 dgram 660 wifi wifi
+    disabled
+    oneshot
+
+service wpa_supplicant /system/bin/wpa_supplicant \
+    -iwlan0 -Dnl80211 -c/data/misc/wifi/wpa_supplicant.conf -e/data/misc/wifi/entropy.bin \
+    -O/data/misc/wifi/sockets -g@android:wpa_wlan0
+    class main
+    socket wpa_wlan0 dgram 660 wifi wifi
+    disabled
+    oneshot
+
+service dhcpcd_wlan0 /system/bin/dhcpcd -aABDKL
+    class main
+    disabled
+    oneshot
+
+service iprenew_wlan0 /system/bin/dhcpcd -n
+    class main
+    disabled
+    oneshot
+
+service dhcpcd_p2p /system/bin/dhcpcd -aABKL
+    class main
+    disabled
+    oneshot
+
+service iprenew_p2p /system/bin/dhcpcd -n
+    class main
+    disabled
+    oneshot
+
+service dhcpcd_bt-pan /system/bin/dhcpcd -ABKL
+    class main
+    disabled
+    oneshot
+
+service iprenew_bt-pan /system/bin/dhcpcd -n
+    class main
+    disabled
+    oneshot
+
+on property:wlan.driver.status=ok
+    chown wifi wifi /sys/devices/platform/wl1271/bt_coex_state
+
+on property:sys.boot_completed=1
