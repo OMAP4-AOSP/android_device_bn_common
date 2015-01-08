@@ -202,3 +202,5 @@ PRODUCT_COPY_FILES += \
     $(COMMON_FOLDER)/prebuilt/poetry/poem.txt:root/sbin/poem.txt
 
 $(call inherit-product-if-exists, vendor/bn/omap4470-common/omap4470-common-vendor.mk)
+$(call inherit-product, hardware/ti/wlan/mac80211/wl127x-wlan-products.mk)
+$(call inherit-product-if-exists, hardware/ti/wpan/ti-wpan-products.mk)
