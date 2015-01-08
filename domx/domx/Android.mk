@@ -21,7 +21,7 @@ LOCAL_C_INCLUDES += \
     $(LOCAL_PATH)/profiling/inc \
     $(LOCAL_PATH)/plugins/inc/ \
     $(COMMON_FOLDER)/hwc/ \
-    $(COMMON_FOLDER)/ion_ti/ \
+    $(COMMON_FOLDER)/libion_ti/ \
     system/core/include/cutils \
     hardware/libhardware/include
 
