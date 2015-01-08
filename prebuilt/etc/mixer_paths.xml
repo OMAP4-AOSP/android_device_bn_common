@@ -1,51 +1,59 @@
 <mixer>
-  <!-- These are the initial mixer settings -->
-  <ctl name="Speaker Switch" value="1" />
-  <ctl name="Int Mic Switch" value="0" />
-  <ctl name="Int Spk Switch" value="0" />
-  <ctl name="Headphone Jack Switch" value="0" />
-  <ctl name="Mic Jack Switch" value="0" />
-  <ctl name="Right Speaker Mixer DACR Switch" value="1"/>
-  <ctl name="Left Speaker Mixer DACL Switch" value="1"/>
-  <ctl name="HPF Switch" value="0"/>
-  <ctl name="Right ADC Input" value="ADC"/>
-  <ctl name="Left ADC Input" value="ADC"/>
-  <ctl name="Digital Capture Volume" value="96"/>
-  <ctl name="DRC Switch" value="0"/>
+	<!-- Settings pulled from omapzoom's audio HAL -->
 
-  <path name="speaker">
-    <ctl name="Int Spk Switch" value="1" />
-    <ctl name="Headphone Jack Switch" value="0" />
-  </path>
+	<!-- These are the initial mixer settings -->
+	<ctl name="DL1 Equalizer" value="Flat response" />
+	<ctl name="DL1 Media Playback Volume" value="132" />
+	<ctl name="DL1 Voice Playback Volume" value="130" />
+	<ctl name="SDT DL Volume" value="120" />
+	<ctl name="Earphone Playback Volume" value="15" />
+	<ctl name="AUDUL Voice UL Volume" value="120" />
+	<ctl name="Capture Preamplifier Volume" value="1" />
+	<ctl name="Capture Volume" value="4" />
+	<ctl name="SDT UL Volume" value="101" />
+	<ctl name="Sidetone Mixer Capture" value="0" />
+	<ctl name="Sidetone Mixer Playback" value="1" />
+	<ctl name="DL1 PDM Switch" value="0" />
+	<ctl name="DL1 PDM_DL2 Switch" value="0" />
+	<ctl name="Headset Power Mode" value="Low-Power" />
+	<ctl name="BT UL Volume" value="126" />
+	<ctl name="Analog Right Capture Route" value="Off" />
+	<ctl name="Analog Left Capture Route" value="Off" />
 
-  <path name="headphone">
-    <ctl name="Int Spk Switch" value="0" />
-    <ctl name="Headphone Jack Switch" value="1" />
-    <ctl name="Right Speaker Mixer DACR Switch" value="0"/>
-    <ctl name="Left Speaker Mixer DACL Switch" value="0"/>
-  </path>
-  
-  <path name="hdmi">
-    <ctl name="Speaker Switch" value="0" />
-  </path>
+	<!-- no pop -->
+	<ctl name="DL1 Mixer Multimedia" value="0" />
 
-  <path name="main-mic-top">
-    <ctl name="Int Mic Switch" value="1" />
-    <ctl name="HPF Switch" value="1"/>
-    <ctl name="Right ADC Input" value="DMIC"/>
-    <ctl name="Left ADC Input" value="DMIC"/>
-    <ctl name="DRC Switch" value="1"/>
-  </path>
+	<path name="speaker">
+		<!-- codec output controls -->
+		<ctl name="DL1 PDM_DL2 Switch" value="1" />
+		<ctl name="Handsfree Playback Volume" value="26" />
+		<ctl name="Spk Right Playback Switch" value="1" />
+		<ctl name="Spk Left Playback Switch" value="1" />
+		<ctl name="Handsfree Right Playback" value="HF DAC" />
+		<ctl name="Handsfree Left Playback" value="HF DAC" />
+		<ctl name="DL1 Mixer Multimedia" value="1" />
+	</path>
 
-  <path name="main-mic-left">
-    <ctl name="Int Mic Switch" value="1" />
-    <ctl name="HPF Switch" value="1"/>
-    <ctl name="Right ADC Input" value="DMIC"/>
-    <ctl name="Left ADC Input" value="DMIC"/>
-    <ctl name="DRC Switch" value="1"/>
-  </path>
+	<path name="headphone">
+		<ctl name="DL1 PDM Switch" value="1" />
+		<ctl name="Headset Playback Volume" value="7" />
+		<ctl name="Headset Right Playback" value="HS DAC" />
+		<ctl name="Headset Left Playback" value="HS DAC" />
+		<ctl name="DL1 Mixer Multimedia" value="1" />
+	</path>
 
-  <path name="headset-mic">
-    <ctl name="Mic Jack Switch" value="1" />
-  </path>
+	<path name="headset">
+		<ctl name="MUX_UL10" value="AMic1" />
+		<ctl name="MUX_UL11" value="AMic1" />
+		<ctl name="Analog Right Capture Route" value="Headset Mic" />
+		<ctl name="Analog Left Capture Route" value="Headset Mic" />
+		<ctl name="AMIC UL Volume" value="135" />
+	</path>
+
+	<path name="builtin-mic">
+		<ctl name="MUX_UL10" value="DMic1L" />
+		<ctl name="MUX_UL11" value="DMic1L" />
+		<!-- HASH: double check this.  not sure why main mic is setting DMIC2 volume -->
+		<ctl name="DMIC2 UL Volume" value="147" />
+	</path>
 </mixer>
