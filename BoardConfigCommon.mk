@@ -235,13 +235,17 @@ MALLOC_IMPL := dlmalloc
 # TWRP stuff
 TW_NO_REBOOT_BOOTLOADER := true
 TW_NO_REBOOT_RECOVERY := true
-TW_INTERNAL_STORAGE_PATH := "/data/media"
+TW_INTERNAL_STORAGE_PATH := "/data/media/0"
 TW_INTERNAL_STORAGE_MOUNT_POINT := "data"
 RECOVERY_SDCARD_ON_DATA := true
 TW_EXTERNAL_STORAGE_PATH := "/sdcard"
 TW_EXTERNAL_STORAGE_MOUNT_POINT := "sdcard"
 TW_DEFAULT_EXTERNAL_STORAGE := true
 TW_BRIGHTNESS_PATH := /sys/class/backlight/lcd-backlight/brightness
-TW_CUSTOM_POWER_BUTTON := 107
 TW_MAX_BRIGHTNESS := 254
 TW_CUSTOM_BATTERY_PATH := /sys/class/power_supply/bq27500-0
+TARGET_USERIMAGES_USE_EXT4 := true
+TARGET_USERIMAGES_USE_F2FS := true
+ifneq (,$(strip $(wildcard bootable/recovery-twrp/twrp.cpp)))
+RECOVERY_VARIANT := twrp
+endif
