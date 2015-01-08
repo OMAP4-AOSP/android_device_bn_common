@@ -1546,11 +1546,9 @@ OMX_ERRORTYPE PROXY_GetParameter(OMX_IN OMX_HANDLETYPE hComponent,
 OMX_ERRORTYPE __PROXY_GetConfig(OMX_HANDLETYPE hComponent,
 	OMX_INDEXTYPE nConfigIndex, OMX_PTR pConfigStruct, OMX_PTR pLocBufNeedMap)
 {
-#if 0
 #ifdef USE_ION
 	OMX_PTR *pAuxBuf = pLocBufNeedMap;
 	OMX_PTR pRegistered = NULL;
-#endif
 #endif
 
 	OMX_ERRORTYPE eError = OMX_ErrorNone, eCompReturn = OMX_ErrorNone;
@@ -1569,7 +1567,6 @@ OMX_ERRORTYPE __PROXY_GetConfig(OMX_HANDLETYPE hComponent,
 				hComponent, pCompPrv, nConfigIndex,
 				pConfigStruct);
 
-#if 0
 #ifdef USE_ION
 	if (pAuxBuf != NULL) {
 		int fd = *((int*)pAuxBuf);
@@ -1582,19 +1579,16 @@ OMX_ERRORTYPE __PROXY_GetConfig(OMX_HANDLETYPE hComponent,
 		}
 	}
 #endif
-#endif
 
 	eRPCError =
 		RPC_GetConfig(pCompPrv->hRemoteComp, nConfigIndex, pConfigStruct,
 			pLocBufNeedMap, &eCompReturn);
-#if 0
 #ifdef USE_ION
 	PROXY_checkRpcError();
 	if (pRegistered != NULL) {
 		eRPCError = RPC_UnRegisterBuffer(pCompPrv->hRemoteComp, pRegistered, NULL, IONPointers);
 		PROXY_checkRpcError();
 	}
-#endif
 #endif
 
 	PROXY_checkRpcError();
