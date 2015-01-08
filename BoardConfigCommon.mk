@@ -121,10 +121,6 @@ BOARD_VOLD_MAX_PARTITIONS := 32
 BOARD_VOLD_EMMC_SHARES_DEV_MAJOR := true
 TARGET_USE_CUSTOM_LUN_FILE_PATH := "/sys/devices/virtual/android_usb/android0/f_mass_storage/lun%d/file"
 
-ifndef BOARD_EGL_CFG
-BOARD_EGL_CFG := $(COMMON_FOLDER)/prebuilt/etc/egl.cfg
-endif
-
 # Custom DOMX
 TI_CUSTOM_DOMX_PATH := $(COMMON_FOLDER)/domx
 DOMX_PATH := $(COMMON_FOLDER)/domx
