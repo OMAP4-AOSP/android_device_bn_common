@@ -117,7 +117,6 @@ PRODUCT_PACKAGES += \
 
 # Misc / Testing
 PRODUCT_PACKAGES += \
-    evtest \
     strace \
     libjni_pinyinime \
     sh \
@@ -127,10 +126,6 @@ PRODUCT_PACKAGES += \
     libion.so \
     pvrsrvinit \
     libPVRScopeServices.so
-
-# Extra apps (not always included by AOSP)
-PRODUCT_PACKAGES += \
-    Email \
 
 PRODUCT_AAPT_PREF_CONFIG := hdpi
 # BT
@@ -172,17 +167,10 @@ PRODUCT_PACKAGES += \
     libstagefrighthw \
     libI420colorconvert \
     libtiutils_custom \
-    libcamera \
     libion_ti \
-    libomxcameraadapter \
     smc_pa_ctrl \
     tf_daemon \
     libtf_crypto_sst
-
-# Standard CM stuff.
-PRODUCT_PACKAGES += \
-    hwprops \
-    CMStats \
 
 # Hardware HALs
 PRODUCT_PACKAGES += \
