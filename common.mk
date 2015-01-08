@@ -82,11 +82,11 @@ PRODUCT_TAGS += dalvik.gc.type-precise
 
 # Rootfs
 PRODUCT_COPY_FILES += \
-    $(LOCAL_KERNEL):kernel \
-    $(COMMON_FOLDER)/default.prop:/root/default.prop \
+    $(LOCAL_KERNEL):kernel
 
 # Wifi
 PRODUCT_PACKAGES += \
+    wpa_supplicant \
     ti_wfd_libs \
     dhcpcd.conf \
     lib_driver_cmd_wl12xx \
@@ -97,7 +97,11 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     make_ext4fs \
     sdcard \
-    setup_fs
+    setup_fs \
+    e2fsck \
+    mkfs.f2fs \
+    fsck.f2fs \
+    fibmap.f2fs
 
 # Audio Support
 PRODUCT_PACKAGES += \
@@ -120,6 +124,7 @@ PRODUCT_PACKAGES += \
     strace \
     libjni_pinyinime \
     sh \
+    libcorkscrew
 
 # symlinks and pvr files
 PRODUCT_PACKAGES += \
@@ -163,6 +168,7 @@ PRODUCT_PACKAGES += \
     libOMX.TI.DUCATI1.VIDEO.MPEG4E \
     libOMX.TI.DUCATI1.VIDEO.DECODER \
     libOMX.TI.DUCATI1.VIDEO.DECODER.secure \
+    libOMX.TI.DUCATI1.VIDEO.CAMERA \
     libOMX.TI.DUCATI1.MISC.SAMPLE \
     libstagefrighthw \
     libI420colorconvert \
