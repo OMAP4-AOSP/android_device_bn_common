@@ -11,3 +11,11 @@ if [ ! -f "$NVS_BIN" ]; then
     chmod 644 ${NVS_BIN}
     mount -o remount,ro /system
 fi
+
+#fix race condition where wl1271-nvs.bin wasn't ready after a complete wipe
+insmod /system/lib/modules/compat.ko
+insmod /system/lib/modules/cfg80211.ko
+insmod /system/lib/modules/mac80211.ko
+insmod /system/lib/modules/wl12xx.ko
+insmod /system/lib/modules/wl12xx_sdio.ko
+
