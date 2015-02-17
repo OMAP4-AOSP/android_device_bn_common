@@ -60,10 +60,12 @@ on fs
     chown root system /proc/net/ip_conntrack
 
 on post-fs
-    # Fix wlan MAC addr
-    start fixmac
-
     setprop ro.radio.noril yes
+
+    insmod /system/lib/modules/compat.ko
+    insmod /system/lib/modules/cfg80211.ko
+    insmod /system/lib/modules/mac80211.ko
+    insmod /system/lib/modules/wl12xx.ko
 
     # change /dev/hdcp owner and permission for FQC test
     chown system system /dev/hdcp
@@ -74,6 +76,9 @@ on post-fs
     # 2 - Main Profile
     # 8 - High Profile
     setprop video.h264enc.profile 1
+
+    # Fix wlan MAC addr
+    start fixmac
 
     # wi-fi
     setprop wifi.interface "wlan0"
