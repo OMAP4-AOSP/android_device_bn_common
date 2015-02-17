@@ -17,12 +17,11 @@ TARGET_BOARD_OMAP_CPU := 4470
 # inherit from the proprietary version
 -include vendor/bn/omap4470-common/BoardConfigVendor.mk
 
+# inherit from omap4
+-include hardware/ti/omap4/BoardConfigCommon.mk
+
 # set to allow building from omap4-common
 BOARD_VENDOR := bn
-
-PRODUCT_VENDOR_KERNEL_HEADERS := $(COMMON_FOLDER)/kernel-headers
-
-TARGET_SPECIFIC_HEADER_PATH := $(COMMON_FOLDER)/include
 
 USE_CAMERA_STUB := true
 BOARD_HAVE_FAKE_GPS := true
@@ -46,9 +45,9 @@ WLAN_MODULES:
 TARGET_KERNEL_MODULES += WLAN_MODULES
 
 SGX_MODULES:
-	make clean -C $(COMMON_FOLDER)/pvr-source/eurasiacon/build/linux2/omap4430_android
+	make clean -C $(HARDWARE_TI_OMAP4_BASE)/pvr-source/eurasiacon/build/linux2/omap4430_android
 	cp $(TARGET_KERNEL_SOURCE)/drivers/video/omap2/omapfb/omapfb.h $(KERNEL_OUT)/drivers/video/omap2/omapfb/omapfb.h
-	make -j8 -C $(COMMON_FOLDER)/pvr-source/eurasiacon/build/linux2/omap4430_android ARCH=arm KERNEL_CROSS_COMPILE=arm-eabi- CROSS_COMPILE=arm-eabi- KERNELDIR=$(KERNEL_OUT) TARGET_PRODUCT="blaze_tablet" BUILD=release TARGET_SGX=544sc PLATFORM_VERSION=4.0
+	make -j8 -C $(HARDWARE_TI_OMAP4_BASE)/pvr-source/eurasiacon/build/linux2/omap4430_android ARCH=arm KERNEL_CROSS_COMPILE=arm-eabi- CROSS_COMPILE=arm-eabi- KERNELDIR=$(KERNEL_OUT) TARGET_PRODUCT="blaze_tablet" BUILD=release TARGET_SGX=544sc PLATFORM_VERSION=4.0
 	mv $(KERNEL_OUT)/../../target/kbuild/pvrsrvkm_sgx544_112.ko $(KERNEL_MODULES_OUT)
 	$(ARM_EABI_TOOLCHAIN)/arm-eabi-strip --strip-unneeded $(KERNEL_MODULES_OUT)/pvrsrvkm_sgx544_112.ko
 
@@ -61,27 +60,6 @@ BOARD_USES_GENERIC_AUDIO := false
 # Bluetooth
 BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := $(COMMON_FOLDER)/bluetooth
 BOARD_HAVE_BLUETOOTH_TI := true
-
-# Setup custom omap4xxx defines
-BOARD_USE_CUSTOM_LIBION := true
-
-# TI Enhancement Settings (Part 1)
-OMAP_ENHANCEMENT := true
-#OMAP_ENHANCEMENT_BURST_CAPTURE := true
-#OMAP_ENHANCEMENT_S3D := true
-#OMAP_ENHANCEMENT_CPCAM := true
-#OMAP_ENHANCEMENT_VTC := true
-OMAP_ENHANCEMENT_MULTIGPU := true
-BOARD_USE_TI_ENHANCED_DOMX := true
-
-# Processor
-TARGET_CPU_ABI := armeabi-v7a
-TARGET_CPU_VARIANT := cortex-a9
-TARGET_CPU_ABI2 := armeabi
-TARGET_CPU_SMP := true
-TARGET_ARCH := arm
-TARGET_BOARD_PLATFORM := omap4
-TARGET_ARCH_VARIANT := armv7-a-neon
 
 # Wifi
 USES_TI_MAC80211                 := true
@@ -137,60 +115,8 @@ TARGET_USES_OPENGLES_FOR_SCREEN_CAPTURE := true
 
 TARGET_RECOVERY_PRE_COMMAND := "echo 'recovery' > /bootdata/BCB; sync"
 
-# TI Enhancement Settings (Part 2)
-ifdef BOARD_USE_TI_ENHANCED_DOMX
-    BOARD_USE_TI_DUCATI_H264_PROFILE := true
-    COMMON_GLOBAL_CFLAGS += -DENHANCED_DOMX
-    ENHANCED_DOMX := true
-    TARGET_SPECIFIC_HEADER_PATH += $(COMMON_FOLDER)/domx/omx_core/inc
-    BOARD_USE_TI_CUSTOM_DOMX := true
-    DOMX_PATH := $(COMMON_FOLDER)/domx
-else
-    DOMX_PATH := hardware/ti/omap4xxx/domx
-endif
-
-ifdef OMAP_ENHANCEMENT
-    COMMON_GLOBAL_CFLAGS += -DOMAP_ENHANCEMENT -DTARGET_OMAP4 -DFORCE_SCREENSHOT_CPU_PATH
-endif
-
-ifdef OMAP_ENHANCEMENT_BURST_CAPTURE
-    COMMON_GLOBAL_CFLAGS += -DOMAP_ENHANCEMENT_BURST_CAPTURE
-endif
-
-ifdef OMAP_ENHANCEMENT_S3D
-    COMMON_GLOBAL_CFLAGS += -DOMAP_ENHANCEMENT_S3D
-endif
-
-ifdef OMAP_ENHANCEMENT_CPCAM
-    COMMON_GLOBAL_CFLAGS += -DOMAP_ENHANCEMENT_CPCAM
-    PRODUCT_MAKEFILES += $(LOCAL_DIR)/sdk_addon/ti_omap_addon.mk
-endif
-
-ifdef OMAP_ENHANCEMENT_VTC
-    COMMON_GLOBAL_CFLAGS += -DOMAP_ENHANCEMENT_VTC
-endif
-
-ifdef USE_ITTIAM_AAC
-    COMMON_GLOBAL_CFLAGS += -DUSE_ITTIAM_AAC
-endif
-
-ifdef OMAP_ENHANCEMENT_MULTIGPU
-    COMMON_GLOBAL_CFLAGS += -DOMAP_ENHANCEMENT_MULTIGPU
-endif
-
-
 # Misc.
 BOARD_NEEDS_CUTILS_LOG := true
-BOARD_USES_LOCAL_SECURE_SERVICES := true
-
-# CodeAurora Optimizations: msm8960: Improve performance of memmove, bcopy, and memmove_words
-# added by twa_priv
-TARGET_USE_KRAIT_BIONIC_OPTIMIZATION := true
-TARGET_USE_KRAIT_PLD_SET := true
-TARGET_KRAIT_BIONIC_PLDOFFS := 10
-TARGET_KRAIT_BIONIC_PLDTHRESH := 10
-TARGET_KRAIT_BIONIC_BBTHRESH := 64
-TARGET_KRAIT_BIONIC_PLDSIZE := 64
 
 # Recovery
 BOARD_HAS_LARGE_FILESYSTEM := true
@@ -200,11 +126,6 @@ TARGET_RECOVERY_PIXEL_FORMAT := "BGRA_8888"
 BOARD_USE_CUSTOM_RECOVERY_FONT := \"roboto_15x24.h\"
 RECOVERY_NAME := EMMC CWM-based recovery
 TARGET_NO_SEPARATE_RECOVERY := true
-
-# Bootanimation
-TARGET_BOOTANIMATION_PRELOAD := false
-TARGET_BOOTANIMATION_TEXTURE_CACHE := false
-TARGET_BOOTANIMATION_USE_RGB565 := true
 
 # SELinux stuff
 BOARD_SEPOLICY_DIRS += \

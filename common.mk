@@ -19,14 +19,13 @@
 
 COMMON_FOLDER := device/bn/common
 
+$(call inherit-product-if-exists, hardware/ti/omap4/omap4.mk)
+
 # set to allow building from omap4-common
 BOARD_VENDOR := bn
 
 # add common overlays
 DEVICE_PACKAGE_OVERLAYS += $(COMMON_FOLDER)/overlay/aosp
-
-# Setup custom omap4xxx defines
-BOARD_USE_CUSTOM_LIBION := true
 
 ifeq ($(TARGET_PREBUILT_KERNEL),)
 LOCAL_KERNEL := $(DEVICE_FOLDER)/kernel
@@ -100,7 +99,7 @@ PRODUCT_PACKAGES += \
     ti_wfd_libs \
     dhcpcd.conf \
     lib_driver_cmd_wl12xx \
-    TQS_D_1.7.ini \
+    TQS_S_2.6.ini \
     calibrator
 
 # Filesystem management tools
@@ -133,14 +132,7 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     strace \
     libjni_pinyinime \
-    sh \
-    libcorkscrew
-
-# symlinks and pvr files
-PRODUCT_PACKAGES += \
-    libion.so \
-    pvrsrvinit \
-    libPVRScopeServices.so
+    sh
 
 PRODUCT_AAPT_PREF_CONFIG := hdpi
 # BT
@@ -170,29 +162,8 @@ PRODUCT_COPY_FILES += \
 # USB Host app switcher
 #PRODUCT_PACKAGES += USBHostSwitcher
 
-# TI OMAP4
-PRODUCT_PACKAGES += \
-    libdomx \
-    libOMX_Core \
-    libOMX.TI.DUCATI1.VIDEO.H264E \
-    libOMX.TI.DUCATI1.VIDEO.H264SVCE \
-    libOMX.TI.DUCATI1.VIDEO.VC1E \
-    libOMX.TI.DUCATI1.VIDEO.MPEG4E \
-    libOMX.TI.DUCATI1.VIDEO.DECODER \
-    libOMX.TI.DUCATI1.VIDEO.DECODER.secure \
-    libOMX.TI.DUCATI1.VIDEO.CAMERA \
-    libOMX.TI.DUCATI1.MISC.SAMPLE \
-    libstagefrighthw \
-    libI420colorconvert \
-    libtiutils_custom \
-    libion_ti \
-    smc_pa_ctrl \
-    tf_daemon \
-    libtf_crypto_sst
-
 # Hardware HALs
 PRODUCT_PACKAGES += \
-    hwcomposer.$(TARGET_BOOTLOADER_BOARD_NAME) \
     lights.$(TARGET_BOOTLOADER_BOARD_NAME) \
     power.$(TARGET_BOOTLOADER_BOARD_NAME) \
     audio.primary.$(TARGET_BOOTLOADER_BOARD_NAME) \
