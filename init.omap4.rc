@@ -124,6 +124,10 @@ on boot
 on property:dev.bootcomplete=1
     start bootcnt
     start install_keybox
+    write /sys/module/cpu_boost/parameters/boost_ms 20
+    write /sys/module/cpu_boost/parameters/sync_threshold 1100000
+    write /sys/module/cpu_boost/parameters/input_boost_freq 1300000
+    write /sys/module/cpu_boost/parameters/input_boost_ms 40
 
 on property:sys.boot_completed=1
     # Tell dalvik to only use two threads
