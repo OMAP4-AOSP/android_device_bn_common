@@ -140,18 +140,24 @@ BOARD_SEPOLICY_DIRS += \
 BOARD_SEPOLICY_UNION += \
     bluetooth.te \
     debuggered.te \
-    file_contexts \
     device.te \
     dhcp.te \
     domain.te \
     file.te \
+    file_contexts \
+    fixmac.te \
+    init.te \
     init_shell.te \
     mediaserver.te \
     netd.te \
     pvrsrvinit.te \
     rild.te \
+    setup_fs.te \
+    shell.te \
+    smc_pa.te \
     system.te \
     tee.te \
+    ueventd.te \
     vold.te
 
 # Include an expanded selection of fonts

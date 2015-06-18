@@ -1,0 +1,5 @@
+allow ueventd radio_data_file:dir search;
+allow ueventd radio_data_file:file { read getattr open };
+allow ueventd sysfs_bluetooth_writable:file { write open };
+allow ueventd vfat:dir search;
+allow ueventd vfat:file { read getattr open };
