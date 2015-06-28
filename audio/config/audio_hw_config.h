@@ -34,7 +34,7 @@
 
 struct pcm_config pcm_config_out = {
     .channels = 2,
-    .rate = 44100,
+    .rate = 48000,
     .period_size = 960,
     .period_count = 4,
     .format = PCM_FORMAT_S16_LE,
@@ -43,7 +43,7 @@ struct pcm_config pcm_config_out = {
 
 struct pcm_config pcm_config_out_lp = {
     .channels = 2,
-    .rate = 44100,
+    .rate = 48000,
     .period_size = 960,
     .period_count = 8,
     .format = PCM_FORMAT_S16_LE,
