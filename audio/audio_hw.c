@@ -241,13 +241,10 @@ static int start_output_stream(struct stream_out *out)
      * (speaker/headphone) PCM or the BC SCO PCM open at
      * the same time.
      */
-#if 0
     if (adev->out_device & AUDIO_DEVICE_OUT_ALL_SCO) {
         device = PCM_DEVICE_SCO_OUT;
         out->pcm_config = pcm_config_sco;
-    } else {
-#endif
-    if (adev->out_device & AUDIO_DEVICE_OUT_AUX_DIGITAL) {
+    } else if (adev->out_device & AUDIO_DEVICE_OUT_AUX_DIGITAL) {
         card = PCM_CARD_HDMI;
         out->pcm_config = pcm_config_hdmi;
     } else {
