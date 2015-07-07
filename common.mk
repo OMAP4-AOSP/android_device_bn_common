@@ -168,7 +168,7 @@ PRODUCT_COPY_FILES += \
 
 
 # USB Host app switcher
-#PRODUCT_PACKAGES += USBHostSwitcher
+PRODUCT_PACKAGES += USBHostSwitcher
 
 # Hardware HALs
 PRODUCT_PACKAGES += \
