@@ -14,6 +14,8 @@
 COMMON_FOLDER := device/bn/common
 TARGET_BOARD_OMAP_CPU := 4470
 
+BOARD_USE_CUSTOM_HWC := true
+
 # inherit from the proprietary version
 -include vendor/bn/omap4470-common/BoardConfigVendor.mk
 
@@ -22,6 +24,10 @@ TARGET_BOARD_OMAP_CPU := 4470
 
 # set to allow building from omap4-common
 BOARD_VENDOR := bn
+
+ifeq ($(BOARD_USE_CUSTOM_HWC),true)
+TARGET_SPECIFIC_HEADER_PATH := $(COMMON_FOLDER)/include
+endif
 
 USE_CAMERA_STUB := true
 BOARD_HAVE_FAKE_GPS := true

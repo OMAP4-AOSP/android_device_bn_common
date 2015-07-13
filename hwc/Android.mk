@@ -12,6 +12,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+ifeq ($(BOARD_USE_CUSTOM_HWC),true)
+
 LOCAL_PATH := $(call my-dir)
 
 # HAL module implementation, not prelinked and stored in
@@ -40,3 +42,5 @@ LOCAL_SHARED_LIBRARIES += libedid
 # LOG_NDEBUG=0 means verbose logging enabled
 # LOCAL_CFLAGS += -DLOG_NDEBUG=0
 include $(BUILD_SHARED_LIBRARY)
+
+endif
