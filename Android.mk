@@ -35,6 +35,20 @@ ALL_DEFAULT_INSTALLED_MODULES += $(HDCP_SYMLINK)
 # for mm/mmm
 all_modules: $(HDCP_SYMLINK)
 
+#Create WLAN NVS symlink
+WLAN_SYMLINK := $(TARGET_OUT_ETC)/firmware/ti-connectivity/wl1271-nvs.bin
+WLAN_BIN_FILE := /rom/devconf/wl1271-nvs.bin
+$(WLAN_SYMLINK): $(LOCAL_INSTALLED_MODULE) $(LOCAL_PATH)/Android.mk
+	@echo "Symlink: $@ -> $(WLAN_BIN_FILE)"
+	@mkdir -p $(TARGET_OUT_ETC)/firmware/ti-connectivity
+	@rm -rf $@
+	$(hide) ln -fs $(WLAN_BIN_FILE) $@
+
+ALL_DEFAULT_INSTALLED_MODULES += $(WLAN_SYMLINK)
+
+# for mm/mmm
+all_modules: $(WLAN_SYMLINK)
+
 endif
 
 LOCAL_PATH := $(call my-dir)
