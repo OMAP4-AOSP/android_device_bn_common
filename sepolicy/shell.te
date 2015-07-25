@@ -1,1 +1,2 @@
 allow shell serial_device:chr_file { read write getattr ioctl };
+allow shell dalvikcache_data_file:file write;

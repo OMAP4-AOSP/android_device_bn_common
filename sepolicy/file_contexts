@@ -29,6 +29,7 @@
 
 # PDS partition
 /rom(/.*)?                               u:object_r:pds_file:s0
+/rom/devconf/wl1271-nvs.bin              u:object_r:radio_data_file:s0
 /rom/devconf/WiFiBackupCalibration       u:object_r:radio_data_file:s0
 
 # wifi binary
