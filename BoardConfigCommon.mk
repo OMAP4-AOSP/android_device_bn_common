@@ -124,6 +124,9 @@ TARGET_RECOVERY_PRE_COMMAND := "echo 'recovery' > /bootdata/BCB; sync"
 # Misc.
 BOARD_NEEDS_CUTILS_LOG := true
 
+# XZ OTAs for smaller downloads
+WITH_LZMA_OTA := true
+
 # Recovery
 BOARD_HAS_LARGE_FILESYSTEM := true
 BOARD_UMS_LUNFILE := "/sys/devices/virtual/android_usb/android0/f_mass_storage/lun/file"
