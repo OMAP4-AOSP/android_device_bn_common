@@ -19,8 +19,8 @@
 #
 LOCAL_PATH := $(call my-dir)
 
-MASTER_KEY := $(LOCAL_PATH)/prebuilt/boot/master_boot.key
-MASTER_RECOVERY_KEY := $(LOCAL_PATH)/prebuilt/boot/master_recovery.key
+MASTER_KEY := $(DEVICE_FOLDER)/prebuilt/boot/master_boot.key
+MASTER_RECOVERY_KEY := $(DEVICE_FOLDER)/prebuilt/boot/master_recovery.key
 
 # this is a copy of the build/core/Makefile target
 $(INSTALLED_BOOTIMAGE_TARGET).temp :  $(MKBOOTIMG) $(INTERNAL_BOOTIMAGE_FILES)
