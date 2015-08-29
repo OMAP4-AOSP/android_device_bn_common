@@ -1,5 +1,4 @@
 on early-init
-    setenforce 1
     mount debugfs debugfs /sys/kernel/debug
     symlink /data/tombstones /tombstones
 
