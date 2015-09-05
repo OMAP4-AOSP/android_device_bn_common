@@ -114,10 +114,27 @@ ADDITIONAL_DEFAULT_PROPERTIES += ro.hwui.disable_scissor_opt=true
 
 # Graphics
 USE_OPENGL_RENDERER := true
+TARGET_USES_OVERLAY := true
+TARGET_USES_ION := true
+# cache opts 12x & 32x defaults
+#MAX_EGL_CACHE_KEY_SIZE := 12*1024
+#MAX_EGL_CACHE_SIZE := 2048*1024
+# anything taller/wider bypasses HWC
+#MAX_VIRTUAL_DISPLAY_DIMENSION := 1920
+# distribute wake events, from Nexus 5
+VSYNC_EVENT_PHASE_OFFSET_NS := 7500000
+SF_VSYNC_EVENT_PHASE_OFFSET_NS := 5000000
+#PRESENT_TIME_OFFSET_FROM_VSYNC_NS := 3200000
 # set if the target supports FBIO_WAITFORVSYNC
-#TARGET_HAS_WAITFORVSYNC := true
-TARGET_RUNNING_WITHOUT_SYNC_FRAMEWORK := true
+TARGET_HAS_WAITFORVSYNC := true
+#TARGET_RUNNING_WITHOUT_SYNC_FRAMEWORK := true
+#BOARD_USE_MHEAP_SCREENSHOT := true
 TARGET_USES_OPENGLES_FOR_SCREEN_CAPTURE := true
+
+# Set to true for platforms with 32 byte L2 cache line.
+ARCH_ARM_HAVE_32_BYTE_CACHE_LINES := true
+# Allowing unaligned access for NEON memory instructions.
+ARCH_ARM_NEON_SUPPORTS_UNALIGNED_ACCESS := true
 
 TARGET_RECOVERY_PRE_COMMAND := "echo 'recovery' > /bootdata/BCB; sync"
 
