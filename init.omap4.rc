@@ -15,7 +15,7 @@ on init
     write /sys/kernel/mm/ksm/pages_to_scan 100
     write /sys/kernel/mm/ksm/sleep_millisecs 500
 
-    write /sys/kernel/mm/ksm/run 1
+    #write /sys/kernel/mm/ksm/run 1
 
     # See storage config details at http://source.android.com/tech/storage/
     mkdir /mnt/shell/emulated 0700 shell shell
