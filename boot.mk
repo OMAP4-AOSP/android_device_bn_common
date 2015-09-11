@@ -23,27 +23,22 @@ MASTER_KEY := $(DEVICE_FOLDER)/prebuilt/boot/master_boot.key
 MASTER_RECOVERY_KEY := $(DEVICE_FOLDER)/prebuilt/boot/master_recovery.key
 
 # this is a copy of the build/core/Makefile target
-$(INSTALLED_BOOTIMAGE_TARGET).temp :  $(MKBOOTIMG) $(INTERNAL_BOOTIMAGE_FILES)
-	$(call pretty,"Making target boot image: $@")
-	$(hide) $(MKBOOTIMG) $(INTERNAL_BOOTIMAGE_ARGS) --output $@
-
-$(INSTALLED_BOOTIMAGE_TARGET): \
-		$(MKBOOTIMG) $(INSTALLED_BOOTIMAGE_TARGET).temp $(MASTER_KEY)
-	$(hide) cp $(MASTER_KEY) $@
-	$(hide) dd if=$@.temp of=$@ bs=1048576 seek=1
-	$(hide) $(call assert-max-image-size,$@, \
-		$(BOARD_BOOTIMAGE_PARTITION_SIZE),raw)
+$(INSTALLED_BOOTIMAGE_TARGET): $(MKBOOTIMG) $(INTERNAL_BOOTIMAGE_FILES) $(MASTER_KEY)
+	$(call pretty,"Target boot image: $@")
+	$(hide) $(MKBOOTIMG) $(INTERNAL_BOOTIMAGE_ARGS) $(BOARD_MKBOOTIMG_ARGS) \
+																--output $@.temp
+	$(hide) cp $(MASTER_KEY) $@; dd if=$@.temp of=$@ bs=1048576 seek=1; rm $@.temp
+	$(hide) $(call assert-max-image-size,$@,$(BOARD_BOOTIMAGE_PARTITION_SIZE),raw)
+	@echo -e ${CL_CYN}"Made boot image: $@"${CL_RST}
 
 #
 # Recovery Image
 #
-$(INSTALLED_RECOVERYIMAGE_TARGET).temp : $(MKBOOTIMG) $(recovery_ramdisk) $(recovery_kernel)
-	$(call pretty,"Making target recovery image: $@")
-	$(hide) $(MKBOOTIMG) $(INTERNAL_RECOVERYIMAGE_ARGS) --output $@
-
 $(INSTALLED_RECOVERYIMAGE_TARGET): \
-		$(MKBOOTIMG) $(INSTALLED_RECOVERYIMAGE_TARGET).temp $(MASTER_RECOVERY_KEY)
-	$(hide) cp $(MASTER_RECOVERY_KEY) $@
-	$(hide) dd if=$@.temp of=$@ bs=1048576 seek=1
-	$(hide) $(call assert-max-image-size,$@, \
-		$(BOARD_RECOVERYIMAGE_PARTITION_SIZE),raw)
+			$(MKBOOTIMG) $(recovery_ramdisk) $(recovery_kernel) $(MASTER_RECOVERY_KEY)
+	$(call pretty,"Target recovery image: $@")
+	$(hide) $(MKBOOTIMG) $(INTERNAL_RECOVERYIMAGE_ARGS) $(BOARD_MKBOOTIMG_ARGS) \
+																		--output $@.temp
+	$(hide) cp $(MASTER_RECOVERY_KEY) $@; dd if=$@.temp of=$@ bs=1048576 seek=1; rm $@.temp
+	$(hide) $(call assert-max-image-size,$@,$(BOARD_RECOVERYIMAGE_PARTITION_SIZE),raw)
+	@echo -e ${CL_CYN}"Made recovery image: $@"${CL_RST}
