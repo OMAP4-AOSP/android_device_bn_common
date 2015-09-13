@@ -63,6 +63,9 @@ TARGET_KERNEL_MODULES += SGX_MODULES
 # by BoardConfigVendor.mk
 BOARD_USES_GENERIC_AUDIO := false
 
+# Never use low-latency audio for ringtones
+AUDIO_FEATURE_DEEP_BUFFER_RINGTONE := true
+
 # Bluetooth
 BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := $(COMMON_FOLDER)/bluetooth
 BOARD_HAVE_BLUETOOTH_TI := true
