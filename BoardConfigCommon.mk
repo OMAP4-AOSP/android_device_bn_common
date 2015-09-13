@@ -16,6 +16,15 @@ TARGET_BOARD_OMAP_CPU := 4470
 
 BOARD_USE_CUSTOM_HWC := true
 
+#TARGET_GLOBAL_CFLAGS += -fno-builtin-sin -fno-strict-volatile-bitfields
+ifneq (,$(strip $(wildcard prebuilts/gcc/linux-x86/arm/arm-*-5.2)))
+TARGET_GCC_VERSION_EXP := 5.2
+else ifneq (,$(strip $(wildcard prebuilts/gcc/linux-x86/arm/arm-*-lto)))
+TARGET_GCC_VERSION_EXP := lto
+else ifneq (,$(strip $(wildcard prebuilts/gcc/linux-x86/arm/arm-*-5.1)))
+TARGET_GCC_VERSION_EXP := 5.1
+endif
+
 # inherit from the proprietary version
 -include vendor/bn/omap4470-common/BoardConfigVendor.mk
 
