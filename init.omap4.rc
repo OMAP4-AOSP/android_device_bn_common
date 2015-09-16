@@ -69,6 +69,9 @@ on fs
 
     chown root system /proc/net/ip_conntrack
 
+    # Disable C.A.D in kernel, the userspace will handle it
+    write /proc/sys/kernel/ctrl-alt-del 0
+
 on post-fs
     setprop ro.radio.noril yes
 
