@@ -91,6 +91,9 @@ ADDITIONAL_BUILD_PROPERTIES += \
     ro.com.google.locationfeatures=1 \
     ro.com.google.networklocation=1
 
+# IO Scheduler (CM12.1+ property)
+#PRODUCT_PROPERTY_OVERRIDES += sys.io.scheduler=bfq
+
 # we have enough storage space to hold precise GC data
 PRODUCT_TAGS += dalvik.gc.type-precise
 
