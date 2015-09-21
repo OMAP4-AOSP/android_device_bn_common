@@ -181,15 +181,6 @@ service bootcnt /system/bin/clear_bootcnt.sh
     disabled
     oneshot
 
-# create filesystems if necessary
-service setup_fs /system/bin/setup_fs \
-    /dev/block/platform/omap/omap_hsmmc.1/by-name/cache \
-    /dev/block/platform/omap/omap_hsmmc.1/by-name/userdata
-    class core
-    user root
-    group root
-    oneshot
-
 ###################################################
 # MSHIELD SMC Daemon - component required to store persistent data coming
 #   from the SMC PA to the device persistent storage
