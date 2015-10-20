@@ -19,10 +19,6 @@ TARGET_KERNEL_HAVE_EXFAT := true
 
 GAPPS_VARIANT := nano
 
-ifneq (,$(strip $(wildcard prebuilts/gcc/linux-x86/arm/arm*eabi*4.9)))
-TARGET_GCC_VERSION_EXP := 4.9
-endif
-
 # inherit from the proprietary version
 -include vendor/ti/omap4/BoardConfigVendor.mk
 
