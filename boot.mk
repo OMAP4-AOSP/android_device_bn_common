@@ -36,7 +36,7 @@ $(INSTALLED_BOOTIMAGE_TARGET): $(MKBOOTIMG) $(INTERNAL_BOOTIMAGE_FILES) $(MASTER
 #
 $(INSTALLED_RECOVERYIMAGE_TARGET): \
 			$(MKBOOTIMG) $(recovery_ramdisk) $(recovery_kernel) $(MASTER_RECOVERY_KEY)
-	$(call pretty,"Target recovery image: $@")
+	$(call build-recoveryimage-target, $@)
 	$(hide) $(MKBOOTIMG) $(INTERNAL_RECOVERYIMAGE_ARGS) $(BOARD_MKBOOTIMG_ARGS) \
 																		--output $@.temp
 	$(hide) cp $(MASTER_RECOVERY_KEY) $@; dd if=$@.temp of=$@ bs=1048576 seek=1; rm $@.temp
