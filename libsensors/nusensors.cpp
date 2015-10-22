@@ -18,6 +18,7 @@
 #include <fcntl.h>
 #include <errno.h>
 #include <dirent.h>
+#include <string.h>
 #include <math.h>
 
 #include <poll.h>
