@@ -1,0 +1,3 @@
+allow toolbox self:capability sys_module;
+allow toolbox kernel:system module_request;
+allow toolbox vfat:file { read write open getattr };

@@ -178,31 +178,7 @@ RECOVERY_NAME := EMMC CWM-based recovery
 TARGET_NO_SEPARATE_RECOVERY := true
 
 # SELinux stuff
-BOARD_SEPOLICY_DIRS += \
-    device/bn/common/sepolicy
-
-BOARD_SEPOLICY_UNION += \
-    bluetooth.te \
-    debuggered.te \
-    device.te \
-    dhcp.te \
-    domain.te \
-    file.te \
-    file_contexts \
-    fixmac.te \
-    init.te \
-    init_shell.te \
-    mediaserver.te \
-    netd.te \
-    pvrsrvinit.te \
-    rild.te \
-    setup_fs.te \
-    shell.te \
-    smc_pa.te \
-    system.te \
-    tee.te \
-    ueventd.te \
-    vold.te
+BOARD_SEPOLICY_DIRS += device/bn/common/sepolicy
 
 # Include an expanded selection of fonts
 EXTENDED_FONT_FOOTPRINT := true
