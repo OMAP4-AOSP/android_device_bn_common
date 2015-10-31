@@ -19,6 +19,9 @@ on init
     symlink /dev/block/platform/omap/omap_hsmmc.1 /dev/block/bootdevice
     chown system /dev/block/bootdevice/by-name
 
+    # Preload the BoringSSL compat wrapper
+    export LD_PRELOAD "libboringssl-compat.so"
+
     # power management
     # Enable off mode by default
     write /sys/kernel/debug/pm_debug/enable_off_mode 1
