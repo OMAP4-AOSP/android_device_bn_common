@@ -16,6 +16,8 @@ TARGET_BOARD_OMAP_CPU := 4470
 
 BOARD_USE_CUSTOM_HWC := true
 
+GAPPS_VARIANT := nano
+
 # inherit from the proprietary version
 -include vendor/bn/omap4470-common/BoardConfigVendor.mk
 

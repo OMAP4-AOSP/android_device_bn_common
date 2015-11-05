@@ -200,3 +200,8 @@ PRODUCT_COPY_FILES += \
 $(call inherit-product-if-exists, vendor/bn/omap4470-common/omap4470-common-vendor.mk)
 $(call inherit-product, hardware/ti/wlan/mac80211/wl127x-wlan-products.mk)
 $(call inherit-product-if-exists, hardware/ti/wpan/ti-wpan-products.mk)
+
+ifneq (,$(strip $(wildcard vendor/google/build/opengapps-packages.mk)))
+$(call inherit-product, vendor/google/build/opengapps-packages.mk)
+PRODUCT_PACKAGES += GoogleHome Chrome
+endif
