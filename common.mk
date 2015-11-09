@@ -144,10 +144,6 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     libwvm \
 
-# BoringSSL compat symbols wrapper
-PRODUCT_PACKAGES += \
-    libboringssl-compat
-
 # Misc / Testing
 PRODUCT_PACKAGES += \
     strace \
