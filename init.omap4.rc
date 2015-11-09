@@ -12,7 +12,7 @@ on early-init
     write /sys/block/mmcblk1/queue/iosched/slice_idle 0
 
 on init
-    loglevel 7
+    #loglevel 7
 
     symlink /dev/block/platform/omap/omap_hsmmc.1 /dev/block/bootdevice
     chown system /dev/block/bootdevice/by-name
