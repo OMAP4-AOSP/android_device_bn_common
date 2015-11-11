@@ -150,6 +150,11 @@ on property:dev.bootcomplete=1
     start bootcnt
     start install_keybox
 
+on property:sys.boot_completed=1
+    # Tell dalvik to only use two threads
+    setprop dalvik.vm.dex2oat-threads 2
+    setprop dalvik.vm.image-dex2oat-threads 2
+
 service fixmac /system/bin/fix-mac.sh
     class core
     user root
