@@ -13,6 +13,8 @@
 
 COMMON_FOLDER := device/bn/common
 
+USE_CLANG_PLATFORM_BUILD := true
+
 BOARD_USE_CUSTOM_HWC := true
 
 TARGET_KERNEL_HAVE_EXFAT := true
