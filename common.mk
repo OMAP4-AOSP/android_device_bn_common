@@ -109,12 +109,6 @@ PRODUCT_PACKAGES += \
     TQS_S_2.6.ini \
     calibrator
 
-# IPv6 tethering
-PRODUCT_PACKAGES += \
-    ebtables \
-    ethertypes \
-    libebtc
-
 # Filesystem management tools
 PRODUCT_PACKAGES += \
     make_ext4fs \
