@@ -14,6 +14,8 @@ on early-init
 on init
     #loglevel 7
 
+    export TERMINFO /system/etc/terminfo
+
     symlink /dev/block/platform/omap/omap_hsmmc.1 /dev/block/bootdevice
     chown system /dev/block/bootdevice/by-name
 
