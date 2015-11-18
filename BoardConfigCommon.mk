@@ -12,7 +12,6 @@
 # limitations under the License.
 
 COMMON_FOLDER := device/bn/common
-TARGET_BOARD_OMAP_CPU := 4470
 
 BOARD_USE_CUSTOM_HWC := true
 
@@ -21,7 +20,7 @@ TARGET_KERNEL_HAVE_EXFAT := true
 GAPPS_VARIANT := nano
 
 # inherit from the proprietary version
--include vendor/bn/omap4470-common/BoardConfigVendor.mk
+-include vendor/ti/omap4/BoardConfigVendor.mk
 
 # inherit from omap4
 -include hardware/ti/omap4/BoardConfigCommon.mk
