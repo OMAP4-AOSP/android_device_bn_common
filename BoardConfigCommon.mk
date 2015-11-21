@@ -127,11 +127,10 @@ BOARD_VOLD_EMMC_SHARES_DEV_MAJOR := true
 TARGET_USE_CUSTOM_LUN_FILE_PATH := "/sys/devices/virtual/android_usb/android0/f_mass_storage/lun%d/file"
 
 # adb has root
-ADDITIONAL_DEFAULT_PROPERTIES += ro.secure=0
-ADDITIONAL_DEFAULT_PROPERTIES += ro.allow.mock.location=1
-
-# Disable scissor optimisation - helps with scrolling performance
-ADDITIONAL_DEFAULT_PROPERTIES += ro.hwui.disable_scissor_opt=true
+ADDITIONAL_DEFAULT_PROPERTIES += \
+    ro.secure=0 \
+    ro.allow.mock.location=1 \
+    ro.debuggable=1
 
 # Graphics
 USE_OPENGL_RENDERER := true
