@@ -79,6 +79,11 @@ Only the three quirks included above are recognized at this point:
 
 <MediaCodecs>
     <Include href="media_codecs_google_audio.xml" />
+    <Settings>
+        <Setting name="max-video-encoder-input-buffers" value="4" />
+        <Setting name="supports-multiple-secure-codecs" value="false" />
+        <Setting name="supports-secure-with-non-secure-codec" value="false" />
+    </Settings>
     <Decoders>
         <MediaCodec name="OMX.TI.DUCATI1.VIDEO.DECODER" >
             <Type name="video/mp4v-es" />
@@ -87,6 +92,7 @@ Only the three quirks included above are recognized at this point:
             <Type name="video/mpeg2" />
             <Quirk name="requires-allocate-on-input-ports" />
             <Quirk name="requires-allocate-on-output-ports" />
+            <Limit name="concurrent-instances" max="4" />
         </MediaCodec>
 
     </Decoders>
@@ -97,17 +103,20 @@ Only the three quirks included above are recognized at this point:
             <Type name="video/3gpp" />
             <Quirk name="requires-allocate-on-input-ports" />
             <Quirk name="requires-allocate-on-output-ports" />
+            <Limit name="concurrent-instances" max="4" />
         </MediaCodec>
 
         <MediaCodec name="OMX.TI.DUCATI1.VIDEO.H264E" type="video/avc" >
             <Quirk name="requires-allocate-on-input-ports" />
             <Quirk name="requires-allocate-on-output-ports" />
+            <Limit name="concurrent-instances" max="4" />
         </MediaCodec>
 
         <MediaCodec name="OMX.ITTIAM.AAC.encode" >
             <Type name="audio/mp4a-latm" />
             <Quirk name="requires-allocate-on-input-ports" />
             <Quirk name="requires-allocate-on-output-ports" />
+            <Limit name="concurrent-instances" max="4" />
         </MediaCodec>
 
     </Encoders>
