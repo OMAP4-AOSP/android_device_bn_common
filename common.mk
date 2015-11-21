@@ -138,11 +138,22 @@ PRODUCT_PACKAGES += \
     audio_policy.default \
     audio.a2dp.default \
     audio.usb.default \
+    libaudio-resampler \
     audio.r_submix.default
 
 # DRM
 PRODUCT_PACKAGES += \
     libwvm \
+
+PRODUCT_PACKAGES += \
+    mm-vdec-omx-test \
+    mm-venc-omx-test720p \
+    libdivxdrmdecrypt \
+    libOmxVdec \
+    libOmxVenc \
+    libOmxCore \
+    libstagefrighthw \
+    libc2dcolorconvert
 
 # Misc / Testing
 PRODUCT_PACKAGES += \
