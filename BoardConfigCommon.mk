@@ -98,6 +98,10 @@ TARGET_KERNEL_SOURCE := kernel/bn/omap
 TARGET_KERNEL_CONFIG := android_omap4_defconfig
 TARGET_KERNEL_SELINUX_CONFIG := selinux_defconfig
 
+ifneq (,$(strip $(wildcard $(TARGET_KERNEL_SOURCE)/drivers/gpu/ion/ion_page_pool.c)))
+export BOARD_USE_TI_LIBION := false
+endif
+
 # Filesystem
 TARGET_USERIMAGES_USE_EXT4 := true
 BOARD_BOOTIMAGE_PARTITION_SIZE := 16777216
