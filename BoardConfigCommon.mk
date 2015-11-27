@@ -208,8 +208,6 @@ BOARD_SEPOLICY_UNION += \
 # Include an expanded selection of fonts
 EXTENDED_FONT_FOOTPRINT := true
 
-MALLOC_IMPL := dlmalloc
-
 # TWRP stuff
 TW_NO_REBOOT_BOOTLOADER := true
 TW_NO_REBOOT_RECOVERY := true
