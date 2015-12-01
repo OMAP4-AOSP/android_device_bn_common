@@ -145,6 +145,8 @@ ARCH_ARM_HAVE_32_BYTE_CACHE_LINES := true
 # Allowing unaligned access for NEON memory instructions.
 ARCH_ARM_NEON_SUPPORTS_UNALIGNED_ACCESS := true
 
+TARGET_BOOTANIMATION_HALF_RES := true
+
 TARGET_RECOVERY_PRE_COMMAND := "echo 'recovery' > /bootdata/BCB; sync"
 
 # Misc.
