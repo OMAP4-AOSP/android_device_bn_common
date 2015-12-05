@@ -16,6 +16,8 @@ TARGET_BOARD_OMAP_CPU := 4470
 
 BOARD_USE_CUSTOM_HWC := true
 
+TARGET_KERNEL_HAVE_EXFAT := true
+
 GAPPS_VARIANT := nano
 
 # inherit from the proprietary version
@@ -60,6 +62,16 @@ SGX_MODULES:
 	$(ARM_EABI_TOOLCHAIN)/arm-eabi-strip --strip-unneeded $(KERNEL_MODULES_OUT)/pvrsrvkm_sgx544_112.ko
 
 TARGET_KERNEL_MODULES += SGX_MODULES
+
+EXFAT_MODULE:
+	make clean -C external/exfat-nofuse KDIR=$(KERNEL_OUT)
+	make -j8 -C external/exfat-nofuse ARCH=arm CROSS_COMPILE=arm-eabi- KDIR=$(KERNEL_OUT)
+	mv external/exfat-nofuse/exfat.ko $(KERNEL_MODULES_OUT)
+	$(ARM_EABI_TOOLCHAIN)/arm-eabi-strip --strip-unneeded $(KERNEL_MODULES_OUT)/exfat.ko
+
+ifeq ($(TARGET_KERNEL_HAVE_EXFAT),true)
+TARGET_KERNEL_MODULES += EXFAT_MODULE
+endif
 
 # This variable is set first, so it can be overridden
 # by BoardConfigVendor.mk

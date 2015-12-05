@@ -82,6 +82,9 @@ on fs
 
     chown root system /proc/net/ip_conntrack
 
+    # native exFAT driver
+    insmod /system/lib/modules/exfat.ko
+
 on post-fs
     setprop ro.radio.noril yes
 
