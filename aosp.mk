@@ -14,6 +14,11 @@
 # limitations under the License.
 #
 
+COMMON_FOLDER := device/bn/common
+
+PRODUCT_COPY_FILES += \
+    $(COMMON_FOLDER)/prebuilt/etc/media_codecs_ffmpeg.xml.stub:/system/etc/media_codecs_ffmpeg.xml
+
 # Device & filesystem
 PRODUCT_PACKAGES += \
     CMFileManager \
