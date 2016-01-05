@@ -27,7 +27,7 @@ int android_reboot(int cmd, int flags __attribute__((unused)), const char *arg)
 {
     int fd;
 
-    if (cmd == (int) ANDROID_RB_RESTART2) {
+    if (cmd == (int) ANDROID_RB_RESTART2 && arg && strlen(arg) > 0) {
         fd = open("/bootdata/BCB", O_CREAT|O_WRONLY, 0644);
         if (fd != -1) {
             write(fd, "recovery", 1);
