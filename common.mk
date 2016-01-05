@@ -81,8 +81,8 @@ ADDITIONAL_BUILD_PROPERTIES += \
     ro.carrier=wifi-only \
     telephony.sms.send=false
 
-# Disable scissor optimisation - helps with scrolling performance
-ADDITIONAL_BUILD_PROPERTIES += ro.hwui.disable_scissor_opt=true
+# Disable the AssetAtlas service - may use more RAM than it saves
+ADDITIONAL_BUILD_PROPERTIES += config.disable_atlas=true
 
 # Avoids retrying for an EGL config w/o EGL_SWAP_BEHAVIOR_PRESERVED
 ADDITIONAL_BUILD_PROPERTIES += debug.hwui.render_dirty_regions=false
