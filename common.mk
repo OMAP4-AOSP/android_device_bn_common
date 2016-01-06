@@ -116,6 +116,7 @@ PRODUCT_PACKAGES += \
     wpa_supplicant \
     ti_wfd_libs \
     dhcpcd.conf \
+    wpa_supplicant.conf \
     lib_driver_cmd_wl12xx \
     TQS_S_2.6.ini \
     calibrator
@@ -169,7 +170,7 @@ PRODUCT_COPY_FILES += \
     $(COMMON_FOLDER)/prebuilt/etc/mixer_paths.xml:/system/etc/mixer_paths.xml \
     $(COMMON_FOLDER)/prebuilt/etc/smc_normal_world_android_cfg.ini:/system/etc/smc_normal_world_android_cfg.ini \
     $(COMMON_FOLDER)/prebuilt/etc/wifi/p2p_supplicant_overlay.conf:/system/etc/wifi/p2p_supplicant_overlay.conf \
-    $(COMMON_FOLDER)/prebuilt/etc/wifi/wpa_supplicant.conf:/system/etc/wifi/wpa_supplicant.conf
+    $(COMMON_FOLDER)/prebuilt/etc/wifi/wpa_supplicant_overlay.conf:/system/etc/wifi/wpa_supplicant_overlay.conf
 
 # Input
 PRODUCT_COPY_FILES += \
