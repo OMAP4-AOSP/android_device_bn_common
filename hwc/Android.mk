@@ -27,11 +27,11 @@ LOCAL_SRC_FILES := hwc.c rgz_2d.c dock_image.c sw_vsync.c
 
 ifeq ($(BOARD_USE_TI_LIBION),true)
 LOCAL_SHARED_LIBRARIES += libion_ti
-LOCAL_C_INCLUDES += hardware/ti/omap4/include
+LOCAL_C_INCLUDES += $(OMAP4_NEXT_FOLDER)/include
 else
 LOCAL_SHARED_LIBRARIES += libion
-LOCAL_SRC_FILES += ../../../../hardware/ti/omap4/libion/ion_ti_custom.c
-LOCAL_C_INCLUDES += $(HARDWARE_TI_OMAP4_BASE)/libion
+LOCAL_SRC_FILES += ../../../../$(OMAP4_NEXT_FOLDER)/libion/ion_ti_custom.c
+LOCAL_C_INCLUDES += $(OMAP4_NEXT_FOLDER)/libion
 endif
 
 LOCAL_STATIC_LIBRARIES := libpng
@@ -43,7 +43,7 @@ LOCAL_CFLAGS := -DLOG_TAG=\"ti_hwc\"
 LOCAL_C_INCLUDES += external/libpng external/zlib
 
 LOCAL_C_INCLUDES += \
-    hardware/ti/omap4/edid/inc \
+    $(OMAP4_NEXT_FOLDER)/edid/inc \
     $(LOCAL_PATH)/../include
 LOCAL_SHARED_LIBRARIES += libedid
 
