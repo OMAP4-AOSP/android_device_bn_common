@@ -162,6 +162,8 @@ TARGET_BOOTANIMATION_HALF_RES := true
 # Misc.
 BOARD_NEEDS_CUTILS_LOG := true
 
+BOARD_HARDWARE_CLASS += $(OMAP4_NEXT_FOLDER)/cmhw
+
 # XZ OTAs for smaller downloads
 WITH_LZMA_OTA := true
 
