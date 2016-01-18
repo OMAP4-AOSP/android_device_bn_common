@@ -29,9 +29,7 @@ GAPPS_VARIANT := nano
 # set to allow building from omap4-common
 BOARD_VENDOR := bn
 
-ifeq ($(BOARD_USE_CUSTOM_HWC),true)
 TARGET_SPECIFIC_HEADER_PATH := $(COMMON_FOLDER)/include
-endif
 
 USE_CAMERA_STUB := true
 BOARD_HAVE_FAKE_GPS := true
