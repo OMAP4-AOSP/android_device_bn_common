@@ -37,7 +37,7 @@ endif
 
 # Rootfs
 PRODUCT_COPY_FILES += \
-    $(COMMON_FOLDER)/init.omap4.rc:/root/init.omap4.rc
+    $(COMMON_FOLDER)/init.hd-common.rc:/root/init.hd-common.rc
 
 # Permissions
 PRODUCT_COPY_FILES += \
