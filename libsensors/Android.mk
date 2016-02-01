@@ -36,7 +36,6 @@ LOCAL_SRC_FILES := \
 	Kxtf9.cpp
 
 LOCAL_SHARED_LIBRARIES := liblog libcutils
-LOCAL_PRELINK_MODULE := false
 
 include $(BUILD_SHARED_LIBRARY)
 
