@@ -37,7 +37,7 @@ endif
 
 # Rootfs
 PRODUCT_COPY_FILES += \
-    $(COMMON_FOLDER)/init.hd-common.rc:/root/init.hd-common.rc \
+    $(COMMON_FOLDER)/root/init.hd-common.rc:/root/init.hd-common.rc \
     $(COMMON_FOLDER)/recovery/root/etc/twrp.fstab:recovery/root/etc/twrp.fstab \
     $(COMMON_FOLDER)/recovery/root/sbin/postrecoveryboot.sh:recovery/root/sbin/postrecoveryboot.sh \
 

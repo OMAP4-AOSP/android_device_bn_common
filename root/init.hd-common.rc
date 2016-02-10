@@ -30,6 +30,9 @@ on init
     symlink /sdcard /storage/sdcard0
 
 on fs
+    mkdir /rom 0777 root root
+    mkdir /bootdata 0777 root root
+
     # zRAM read only 1 page at a time
     write /proc/sys/vm/page-cluster 0
     # Aggressive swap for dirty pages
@@ -85,6 +88,18 @@ on post-fs
 
     #for Bluetooth HID
     chmod 0666 /dev/uhid
+
+    # sensor/i2c/backlight permissions
+    chown system system /sys/bus/i2c/drivers/ft5x06/3-0038/wmreg
+    chown system system /sys/bus/i2c/drivers/ft5x06/3-0038/wmval
+    chown system system /sys/bus/i2c/drivers/kxtf9/1-000e/delay
+    chown system system /sys/bus/i2c/drivers/kxtf9/1-000e/enable
+
+    # use the path below for lcd brightness control
+    chown system system /sys/class/backlight/lcd-backlight/brightness
+
+    # USB ID properties - writable by all for now
+    chmod 0666 /sys/devices/platform/omap/omap_i2c.1/i2c-1/1-0048/twl6030_usb/usb_id
 
 on post-fs-data
     # make dir for trace
