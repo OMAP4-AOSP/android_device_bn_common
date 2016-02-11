@@ -2,6 +2,13 @@ on early-init
     setenforce permissive
     loglevel 7
 
+on init
+    # no systemless SuperSU
+    export SYSTEMLESS false
+
+    symlink /dev/block/platform/omap/omap_hsmmc.1 /dev/block/bootdevice
+    chown system /dev/block/bootdevice/by-name
+
 on fs
     mkdir /bootdata
     mount vfat /dev/block/platform/omap/omap_hsmmc.1/by-name/bootdata /bootdata
