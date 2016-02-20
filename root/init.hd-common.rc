@@ -129,7 +129,7 @@ on boot
 
 on property:dev.bootcomplete=1
     start bootcnt
-    start install_keybox
+    #start install_keybox
     # Both eMMC and external SD card
     write /sys/block/mmcblk0/bdi/read_ahead_kb 256
     write /sys/block/mmcblk1/bdi/read_ahead_kb 256
