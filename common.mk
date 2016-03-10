@@ -200,6 +200,10 @@ PRODUCT_COPY_FILES += \
         $(COMMON_FOLDER)/prebuilt/bin/clear_bootcnt.sh:/system/bin/clear_bootcnt.sh \
 	$(COMMON_FOLDER)/prebuilt/bin/fix-mac.sh:/system/bin/fix-mac.sh
 
+# Prebuilt toybox
+PRODUCT_COPY_FILES += \
+    $(COMMON_FOLDER)/prebuilt/bin/toybox:system/bin/toybox
+
 # Art
 PRODUCT_COPY_FILES += \
     $(COMMON_FOLDER)/prebuilt/poetry/poem.txt:root/sbin/poem.txt
