@@ -77,6 +77,7 @@ ADDITIONAL_BUILD_PROPERTIES += \
     ro.nf.profile=2 \
     ro.nf.level=512 \
     ro.bq.gpu_to_cpu_unsupported=1 \
+    ro.disableWifiApFirmwareReload=true \
     media.stagefright.cache-params=18432/20480/15 \
     ro.ksm.default=1 \
     ro.carrier=wifi-only \
