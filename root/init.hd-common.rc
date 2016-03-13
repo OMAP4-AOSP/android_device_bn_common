@@ -152,6 +152,9 @@ on property:sys.boot_completed=1
     setprop dalvik.vm.dex2oat-threads 2
     setprop dalvik.vm.image-dex2oat-threads 2
 
+on property:wifi.nvs_ready=1
+    insmod /system/lib/modules/wl12xx_sdio.ko
+
 service fixmac /system/bin/fix-mac.sh
     class core
     user root
