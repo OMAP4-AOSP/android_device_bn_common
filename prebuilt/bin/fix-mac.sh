@@ -14,4 +14,4 @@ if [ ! -f "$NVS_BIN" ]; then
     chmod 644 ${NVS_BIN}
 fi
 
-setprop wifi.nvs_ready 1
+insmod $WLAN_PATH
