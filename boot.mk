@@ -19,15 +19,20 @@
 #
 LOCAL_PATH := $(call my-dir)
 
-MASTER_KEY := $(DEVICE_FOLDER)/prebuilt/boot/master_boot.key
-MASTER_RECOVERY_KEY := $(DEVICE_FOLDER)/prebuilt/boot/master_recovery.key
+MASTER_KEY := $(COMMON_FOLDER)/prebuilt/boot/stack.key
+BOOT_BIN := $(DEVICE_FOLDER)/prebuilt/boot/boot.bin
+RECO_BIN := $(DEVICE_FOLDER)/prebuilt/boot/reco.bin
+MY_TAG = "eMMC $(@F)+secondloader for $(TARGET_DEVICE)"
 
 # this is a copy of the build/core/Makefile target
 $(INSTALLED_BOOTIMAGE_TARGET): $(MKBOOTIMG) $(INTERNAL_BOOTIMAGE_FILES) $(MASTER_KEY)
 	$(call pretty,"Target boot image: $@")
 	$(hide) $(MKBOOTIMG) $(INTERNAL_BOOTIMAGE_ARGS) $(BOARD_MKBOOTIMG_ARGS) \
-																--output $@.temp
-	$(hide) cp $(MASTER_KEY) $@; dd if=$@.temp of=$@ bs=1048576 seek=1; rm $@.temp
+																--output $@.orig
+	$(hide) cp $(BOOT_BIN) $@.bin; dd if=$(MASTER_KEY) of=$@.bin bs=782480 seek=1 \
+		conv=notrunc; $(MKBOOTIMG) --kernel $@.bin --ramdisk /dev/null --cmdline \
+		$(MY_TAG) --ramdisk_offset 0x1000000 --pagesize 4096 --base 0x80d78000 -o $@; \
+		cp $@ $@.key; dd if=$@.orig of=$@ bs=1048576 seek=1; rm $@.bin
 	$(hide) $(call assert-max-image-size,$@,$(BOARD_BOOTIMAGE_PARTITION_SIZE),raw)
 	@echo -e ${CL_CYN}"Made boot image: $@"${CL_RST}
 
@@ -35,10 +40,13 @@ $(INSTALLED_BOOTIMAGE_TARGET): $(MKBOOTIMG) $(INTERNAL_BOOTIMAGE_FILES) $(MASTER
 # Recovery Image
 #
 $(INSTALLED_RECOVERYIMAGE_TARGET): \
-			$(MKBOOTIMG) $(recovery_ramdisk) $(recovery_kernel) $(MASTER_RECOVERY_KEY)
+			$(MKBOOTIMG) $(recovery_ramdisk) $(recovery_kernel) $(MASTER_KEY)
 	$(call build-recoveryimage-target, $@)
 	$(hide) $(MKBOOTIMG) $(INTERNAL_RECOVERYIMAGE_ARGS) $(BOARD_MKBOOTIMG_ARGS) \
-																		--output $@.temp
-	$(hide) cp $(MASTER_RECOVERY_KEY) $@; dd if=$@.temp of=$@ bs=1048576 seek=1; rm $@.temp
+																		--output $@.orig
+	$(hide) cp $(RECO_BIN) $@.bin; dd if=$(MASTER_KEY) of=$@.bin bs=782480 seek=1 \
+		conv=notrunc; $(MKBOOTIMG) --kernel $@.bin --ramdisk /dev/null --cmdline \
+		$(MY_TAG) --ramdisk_offset 0x1000000 --pagesize 4096 --base 0x80d78000 -o $@; \
+		cp $@ $@.key; dd if=$@.orig of=$@ bs=1048576 seek=1; rm $@.bin
 	$(hide) $(call assert-max-image-size,$@,$(BOARD_RECOVERYIMAGE_PARTITION_SIZE),raw)
 	@echo -e ${CL_CYN}"Made recovery image: $@"${CL_RST}
