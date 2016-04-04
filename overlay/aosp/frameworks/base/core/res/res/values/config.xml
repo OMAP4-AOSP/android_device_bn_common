@@ -56,6 +56,10 @@
     <!-- Integer indicating wpa_supplicant scan interval in milliseconds -->
     <integer translatable="false" name="config_wifi_supplicant_scan_interval">120000</integer>
 
+    <!-- Integer indicating amount of time failed networks are blacklisted for the purpose
+         of network switching in milliseconds -->
+    <integer translatable="false" name="config_wifi_network_switching_blacklist_time">0</integer>
+
     <!-- If true, the screen can be rotated via the accelerometer in all 4
          rotations as the default behavior. -->
     <bool name="config_allowAllRotations">true</bool>
