@@ -20,8 +20,9 @@ TARGET_KERNEL_HAVE_EXFAT := true
 
 GAPPS_VARIANT := nano
 
-# inherit from the proprietary version
+# inherit from the proprietary versions
 -include vendor/ti/omap4/BoardConfigVendor.mk
+-include vendor/widevine/omap4/BoardConfigVendor.mk
 
 # inherit from omap4
 -include hardware/ti/omap4/BoardConfigCommon.mk
