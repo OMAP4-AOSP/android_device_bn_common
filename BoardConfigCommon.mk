@@ -22,6 +22,7 @@ GAPPS_VARIANT := nano
 
 # inherit from the proprietary versions
 -include vendor/ti/omap4/BoardConfigVendor.mk
+-include vendor/bn/hd-common/BoardConfigVendor.mk
 -include vendor/widevine/omap4/BoardConfigVendor.mk
 
 # inherit from omap4
